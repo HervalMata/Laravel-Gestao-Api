@@ -16,24 +16,24 @@ class CreateTrocasTable extends Migration
         Schema::create('trocas', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('unidade_id')->unsigned();
-            $table->integer('usuario1_id')->unsigned();
+            $table->integer('user1_id')->unsigned();
             $table->integer('turma1_id')->unsigned();
-            $table->integer('usuario2_id')->unsigned();
+            $table->integer('user2_id')->unsigned();
             $table->integer('turma2_id')->unsigned();
             $table->date('data1');
-            $table->string('turno1_id')->unsigned();
-            $table->string('tipo1_id')->unsigned();
-            $table->string('tipo2_id')->unsigned();
+            $table->integer('turno1_id')->unsigned();
+            $table->integer('tipo1_id')->unsigned();
+            $table->integer('tipo2_id')->unsigned();
             $table->date('data2');
-            $table->string('turno2_id')->unsigned();
-            $table->string('tipo3_id')->unsigned();
-            $table->string('tipo4_id')->unsigned();
-            $table->string('situacao_id')->unsigned();
+            $table->integer('turno2_id')->unsigned();
+            $table->integer('tipo3_id')->unsigned();
+            $table->integer('tipo4_id')->unsigned();
+            $table->integer('situacao_id')->unsigned();
             $table->timestamps();
 
             $table->foreign('unidade_id')->references('id')->on('unidades')->onDelete('restrict');
-            $table->foreign('usuario1_id')->references('id')->on('usuarios')->onDelete('restrict');
-            $table->foreign('usuario2_id')->references('id')->on('usuarios')->onDelete('restrict');
+            $table->foreign('user1_id')->references('id')->on('users')->onDelete('restrict');
+            $table->foreign('user2_id')->references('id')->on('users')->onDelete('restrict');
             $table->foreign('turma1_id')->references('id')->on('turmas')->onDelete('restrict');
             $table->foreign('turma2_id')->references('id')->on('turmas')->onDelete('restrict');
             $table->foreign('turno1_id')->references('id')->on('turnos')->onDelete('restrict');

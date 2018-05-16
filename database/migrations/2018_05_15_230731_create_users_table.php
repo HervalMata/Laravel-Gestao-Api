@@ -23,8 +23,11 @@ class CreateUsersTable extends Migration
             $table->integer('perfil_id')->unsigned();
             $table->timestamps();
 
-            $table->foreign('unidade_id')->refrences('id')->on('unidades')->onDelete('restrict');
-            $table->foreign('perfil_id')->refrences('id')->on('perfis')->onDelete('restrict');
+            $table->foreign('unidade_id')
+                ->references('id')->on('unidades')
+                ->onDelete('restrict');
+            $table->foreign('perfil_id')->references('id')->on('perfis')->onDelete('restrict');
+
         });
     }
 
