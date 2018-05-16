@@ -77,4 +77,16 @@ class UnidadeTest extends TestCase
             ]
         ]);
     }
+
+    public function testDeleteUnidade()
+    {
+        $unidade = \App\Unidade::findOrFail(6);
+
+        $this->delete('/api/unidades/'.$unidade->id);
+
+        $this->assertResponseOk();
+
+        $this->assertEquals("Removido com sucesso.", $this->response->content());
+        
+    }
 }

@@ -28,5 +28,8 @@ class UnidadeTableSeeder extends Seeder
         DB::table('unidades')->insert([
             'nome' => 'Utilidades'
         ]);
+        DB::table('unidades')->insert([
+            'nome' => 'Amonia'
+        ]);
     }
 }

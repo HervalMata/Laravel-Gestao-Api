@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Unidade;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 class UnidadeController extends Controller
@@ -48,6 +49,15 @@ class UnidadeController extends Controller
     public function list()
     {
         return Unidade::all();
+    }
+
+    public function delete($id)
+    {
+        if (Unidade::destroy($id)) {
+            return new Response('Removido com sucesso.', 200);
+        } else {
+            return new Response('Erro ao remover.', 401);
+        }
     }
 
 }
