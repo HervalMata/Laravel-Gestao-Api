@@ -15,7 +15,16 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('unidade_id')->unsigned();
+            $table->string('chave', 4)->unique();
+            $table->string('name', 20);
+            $table->string('email', 100)->unique();
+            $table->boolean('ativo')->default(true);
+            $table->integer('perfil_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('unidade_id')->refrences('id')->on('unidades')->onDelete('restrict');
+            $table->foreign('perfil_id')->refrences('id')->on('perfis')->onDelete('restrict');
         });
     }
 
