@@ -27,7 +27,7 @@ class CreateUsersTable extends Migration
             $table->foreign('unidade_id')
                 ->references('id')->on('unidades')
                 ->onDelete('restrict');
-            $table->foreign('perfil_id')->references('id')->on('perfis')->onDelete('restrict');
+            $table->foreign('perfil_id')->references('id')->on('perfils')->onDelete('restrict');
 
         });
     }

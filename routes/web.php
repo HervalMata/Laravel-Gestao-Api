@@ -15,8 +15,16 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->post('/api/unidades', 'UnidadeController@store');
-$router->get('/api/unidades', 'UnidadeController@list');
-$router->get('/api/unidades/{id}', 'UnidadeController@view');
-$router->put('/api/unidades/{id}', 'UnidadeController@update');
-$router->delete('/api/unidades/{id}', 'UnidadeController@delete');
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->post('unidades', ['uses' => 'UnidadeController@store']);
+    $router->get('unidades', ['uses' => 'UnidadeController@list']);
+    $router->get('unidades/{id}', ['uses' => 'UnidadeController@view']);
+    $router->put('unidades/{id}', ['uses' => 'UnidadeController@update']);
+    $router->delete('unidades/{id}', ['uses' => 'UnidadeController@delete']);
+});
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->post('perfis', ['uses' => 'PerfilController@store']);
+    $router->get('perfis', ['uses' => 'PerfilController@list']);
+});
+/*$router->post('/api/perfis', 'PerfilController@store');*/

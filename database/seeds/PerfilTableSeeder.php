@@ -13,16 +13,16 @@ class PerfilTableSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('perfis')->insert([
+        DB::table('perfils')->insert([
             'nome' => 'Administrador'
         ]);
-        DB::table('perfis')->insert([
+        DB::table('perfils')->insert([
             'nome' => 'Gerente'
         ]);
-        DB::table('perfis')->insert([
+        DB::table('perfils')->insert([
             'nome' => 'Supervisor'
         ]);
-        DB::table('perfis')->insert([
+        DB::table('perfils')->insert([
             'nome' => 'Operador'
         ]);
     }
