@@ -16,6 +16,10 @@ class UnidadeController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nome' => 'required|min:3|max:20|unique:unidades'
+        ]);
+
         $unidade = new Unidade($request->all());
         $unidade->save();
 

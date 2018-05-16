@@ -18,7 +18,8 @@ class CreateUsersTable extends Migration
             $table->integer('unidade_id')->unsigned();
             $table->string('chave', 4)->unique();
             $table->string('name', 20);
-            $table->string('email', 100)->unique();
+            $table->string('email', 100);
+            $table->string('password');
             $table->boolean('ativo')->default(true);
             $table->integer('perfil_id')->unsigned();
             $table->timestamps();

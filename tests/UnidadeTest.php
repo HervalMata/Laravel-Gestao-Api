@@ -27,4 +27,18 @@ class UnidadeTest extends TestCase
         $this->assertArrayHasKey('nome', $reposta);
         $this->assertArrayHasKey('id', $reposta);
     }
+
+    public function testViewnidade()
+    {
+        $unidade = \App\Unidade::first();
+
+        $this->get('/api/unidades/'.$unidade->id);
+
+        $this->assertResponseOk();
+
+        /*$reposta = (array) json_decode($this->response->content());
+
+        $this->assertArrayHasKey('nome', $reposta);
+        $this->assertArrayHasKey('id', $reposta);*/
+    }
 }

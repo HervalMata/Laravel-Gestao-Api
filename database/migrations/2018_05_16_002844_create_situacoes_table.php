@@ -15,7 +15,7 @@ class CreateSituacoesTable extends Migration
     {
         Schema::create('situacoes', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('situcao');
+            $table->string('situacao');
             $table->timestamps();
         });
     }
