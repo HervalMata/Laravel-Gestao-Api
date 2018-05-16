@@ -64,7 +64,7 @@ class PerfilTest extends TestCase
 
     }
 
-    /*public function testViewPerfil()
+    public function testViewPerfil()
     {
         $perfil = \App\Perfil::first();
 
@@ -78,7 +78,7 @@ class PerfilTest extends TestCase
         $this->assertArrayHasKey('id', $reposta);
     }
 
-    public function testUpdatePerfil()
+    /*public function testUpdatePerfil()
     {
         $perfil = \App\Perfil::first();
 

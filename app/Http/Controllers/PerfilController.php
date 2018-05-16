@@ -28,6 +28,11 @@ class PerfilController extends Controller
         return $perfil;
     }
 
+    public function view($id)
+    {
+        return Perfil::find($id);
+    }
+
     public function list()
     {
         return Perfil::all();
