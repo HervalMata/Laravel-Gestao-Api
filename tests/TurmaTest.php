@@ -3,19 +3,26 @@
 use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
 
-class ExampleTest extends TestCase
+class TurmaTest extends TestCase
 {
     /**
      * A basic test example.
      *
      * @return void
      */
-    public function testExample()
+    public function testCreateTurma()
     {
-        $this->get('/');
+        $dados = [
+            'turma' => 'F'
+        ];
 
-        $this->assertEquals(
-            $this->app->version(), $this->response->getContent()
-        );
+        $this->post('/api/turmas', $dados);
+
+        $this->assertResponseOk();
+
+        $reposta = (array) json_decode($this->response->content());
+
+        $this->assertArrayHasKey('turma', $reposta);
+        $this->assertArrayHasKey('id', $reposta);
     }
 }

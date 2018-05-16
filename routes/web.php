@@ -30,3 +30,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->put('perfis/{id}', ['uses' => 'PerfilController@update']);
     $router->delete('perfis/{id}', ['uses' => 'PerfilController@delete']);
 });
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->post('turmas', ['uses' => 'TurmaController@store']);
+});
