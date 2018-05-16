@@ -63,4 +63,18 @@ class UnidadeTest extends TestCase
             'nome' => $dados['nome']
         ]);
     }
+
+    public function testAllViewUnidade()
+    {
+        $this->get('/api/unidades/');
+
+        $this->assertResponseOk();
+
+        $this->seeJsonStructure([
+            '*' => [
+                'id',
+                'nome',
+            ]
+        ]);
+    }
 }

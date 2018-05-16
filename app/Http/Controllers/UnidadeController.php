@@ -45,4 +45,9 @@ class UnidadeController extends Controller
         return $unidade;
     }
 
+    public function list()
+    {
+        return Unidade::all();
+    }
+
 }
