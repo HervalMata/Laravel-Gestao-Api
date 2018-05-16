@@ -31,4 +31,18 @@ class UnidadeController extends Controller
         return Unidade::find($id);
     }
 
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'nome' => 'required|min:3|max:20|unique:unidades'
+        ]);
+
+        $unidade = Unidade::find($id);
+
+        $unidade->nome = $request->input('nome');
+        $unidade->update();
+
+        return $unidade;
+    }
+
 }

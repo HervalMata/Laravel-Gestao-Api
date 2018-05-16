@@ -28,7 +28,7 @@ class UnidadeTest extends TestCase
         $this->assertArrayHasKey('id', $reposta);
     }
 
-    public function testViewnidade()
+    public function testViewUnidade()
     {
         $unidade = \App\Unidade::first();
 
@@ -40,5 +40,27 @@ class UnidadeTest extends TestCase
 
         $this->assertArrayHasKey('nome', $reposta);
         $this->assertArrayHasKey('id', $reposta);
+    }
+
+    public function testUpdateUnidade()
+    {
+        $unidade = \App\Unidade::first();
+
+        $dados = [
+            'nome' => 'Teste'
+        ];
+
+        $this->put('/api/unidades/'.$unidade->id, $dados);
+
+        $this->assertResponseOk();
+
+        $reposta = (array) json_decode($this->response->content());
+
+        $this->assertArrayHasKey('nome', $reposta);
+        $this->assertArrayHasKey('id', $reposta);
+
+        $this->seeInDatabase('unidades', [
+            'nome' => $dados['nome']
+        ]);
     }
 }
