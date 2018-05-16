@@ -26,4 +26,9 @@ class UnidadeController extends Controller
         return $unidade;
     }
 
+    public function view($id)
+    {
+        return Unidade::find($id);
+    }
+
 }

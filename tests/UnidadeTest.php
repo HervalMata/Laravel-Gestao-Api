@@ -36,9 +36,9 @@ class UnidadeTest extends TestCase
 
         $this->assertResponseOk();
 
-        /*$reposta = (array) json_decode($this->response->content());
+        $reposta = (array) json_decode($this->response->content());
 
         $this->assertArrayHasKey('nome', $reposta);
-        $this->assertArrayHasKey('id', $reposta);*/
+        $this->assertArrayHasKey('id', $reposta);
     }
 }

@@ -16,3 +16,4 @@ $router->get('/', function () use ($router) {
 });
 
 $router->post('/api/unidades', 'UnidadeController@store');
+$router->get('/api/unidades/{id}', 'UnidadeController@view');
