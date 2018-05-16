@@ -28,6 +28,42 @@ class UnidadeTest extends TestCase
         $this->assertArrayHasKey('id', $reposta);
     }
 
+    public function testNotCreateUnidadeEmpty()
+    {
+        $dados = [
+            'nome' => ''
+        ];
+
+        $this->post('/api/unidades', $dados);
+
+        $this->assertResponseStatus(422);
+
+    }
+
+    public function testNotCreateUnidadeNameTooLong()
+{
+    $dados = [
+        'nome' => 'dggjjhffdddjjkkkoç.mgrsgyyyyyyyyyyyyyyyyy'
+    ];
+
+    $this->post('/api/unidades', $dados);
+
+    $this->assertResponseStatus(422);
+
+    }
+
+    public function testNotCreateUnidadeNameNotUnique()
+    {
+        $dados = [
+            'nome' => 'TEU'
+        ];
+
+        $this->post('/api/unidades', $dados);
+
+        $this->assertResponseStatus(422);
+
+    }
+
     public function testViewUnidade()
     {
         $unidade = \App\Unidade::first();
@@ -87,6 +123,6 @@ class UnidadeTest extends TestCase
         $this->assertResponseOk();
 
         $this->assertEquals("Removido com sucesso.", $this->response->content());
-        
+
     }
 }
