@@ -33,4 +33,5 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('turmas', ['uses' => 'TurmaController@store']);
+    $router->get('turmas/{id}', ['uses' => 'TurmaController@view']);
 });

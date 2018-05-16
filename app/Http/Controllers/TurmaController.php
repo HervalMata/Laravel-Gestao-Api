@@ -24,4 +24,9 @@ class TurmaController extends Controller
 
         return $turma;
     }
+
+    public function view($id)
+    {
+        return Turma::find($id);
+    }
 }
