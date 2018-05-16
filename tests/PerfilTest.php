@@ -114,9 +114,9 @@ class PerfilTest extends TestCase
         ]);
     }
 
-    /*public function testDeletePerfil()
+    public function testDeletePerfil()
     {
-        $perfil = \App\Perfil::findOrFail(6);
+        $perfil = \App\Perfil::findOrFail(5);
 
         $this->delete('/api/perfis/'.$perfil->id);
 
@@ -124,5 +124,15 @@ class PerfilTest extends TestCase
 
         $this->assertEquals("Removido com sucesso.", $this->response->content());
 
-    }*/
+    }
+
+    public function testNotDeletePerfil()
+    {
+        $perfil = \App\Perfil::first();
+
+        $this->delete('/api/perfis/'.$perfil->id);
+
+        $this->assertResponseStatus(500);
+
+    }
 }

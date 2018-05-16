@@ -47,6 +47,15 @@ class PerfilController extends Controller
         return $perfil;
     }
 
+    public function delete($id)
+    {
+        if (Perfil::destroy($id)) {
+            return new Response('Removido com sucesso.', 200);
+        } else {
+            return new Response('Erro ao remover.', 500);
+        }
+    }
+
     public function list()
     {
         return Perfil::all();

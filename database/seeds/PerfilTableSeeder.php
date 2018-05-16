@@ -25,5 +25,8 @@ class PerfilTableSeeder extends Seeder
         DB::table('perfils')->insert([
             'nome' => 'Operador'
         ]);
+        DB::table('perfils')->insert([
+            'nome' => 'Coordenador'
+        ]);
     }
 }

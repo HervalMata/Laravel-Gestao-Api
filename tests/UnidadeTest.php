@@ -125,4 +125,14 @@ class UnidadeTest extends TestCase
         $this->assertEquals("Removido com sucesso.", $this->response->content());
 
     }
+
+    public function testNotDeletePerfil()
+    {
+        $unidade = \App\Unidade::first();
+
+        $this->delete('/api/perfis/'.$unidade->id);
+
+        $this->assertResponseStatus(500);
+
+    }
 }
