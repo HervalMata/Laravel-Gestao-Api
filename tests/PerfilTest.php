@@ -78,7 +78,7 @@ class PerfilTest extends TestCase
         $this->assertArrayHasKey('id', $reposta);
     }
 
-    /*public function testUpdatePerfil()
+    public function testUpdatePerfil()
     {
         $perfil = \App\Perfil::first();
 
@@ -95,10 +95,10 @@ class PerfilTest extends TestCase
         $this->assertArrayHasKey('nome', $reposta);
         $this->assertArrayHasKey('id', $reposta);
 
-        $this->seeInDatabase('perfis', [
+        $this->seeInDatabase('perfils', [
             'nome' => $dados['nome']
         ]);
-    }*/
+    }
 
     public function testAllViewPerfil()
     {

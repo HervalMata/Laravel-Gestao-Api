@@ -27,4 +27,5 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('perfis', ['uses' => 'PerfilController@store']);
     $router->get('perfis', ['uses' => 'PerfilController@list']);
     $router->get('perfis/{id}', ['uses' => 'PerfilController@view']);
+    $router->put('perfis/{id}', ['uses' => 'PerfilController@update']);
 });

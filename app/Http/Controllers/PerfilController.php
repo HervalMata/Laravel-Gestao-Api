@@ -33,6 +33,20 @@ class PerfilController extends Controller
         return Perfil::find($id);
     }
 
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'nome' => 'required|min:3|max:20|unique:perfils'
+        ]);
+
+        $perfil = Perfil::find($id);
+
+        $perfil->nome = $request->input('nome');
+        $perfil->update();
+
+        return $perfil;
+    }
+
     public function list()
     {
         return Perfil::all();
