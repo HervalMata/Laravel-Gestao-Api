@@ -62,4 +62,15 @@ class UserController extends Controller
 
         return $user;
     }
+
+
+
+    public function delete($id)
+    {
+        if (User::destroy($id)) {
+            return new Response('Removido com sucesso.', 200);
+        } else {
+            return new Response('Erro ao remover.', 500);
+        }
+    }
 }

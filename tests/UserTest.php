@@ -307,4 +307,26 @@ class UserTest extends TestCase
         ]);
     }
 
+    public function testDeleteUser()
+    {
+        $user = \App\User::findOrFail(5);
+
+        $this->delete('/api/users/'.$user->id);
+
+        $this->assertResponseOk();
+
+        $this->assertEquals("Removido com sucesso.", $this->response->content());
+
+    }
+
+    public function testNotDeleteUser()
+    {
+        $user = \App\User::findOrFail(7);
+
+        $this->delete('/api/users/'.$user->id);
+
+        $this->assertResponseStatus(500);
+
+    }
+
 }
