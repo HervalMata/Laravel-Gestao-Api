@@ -284,7 +284,7 @@ class UserTest extends TestCase
         ];
 
         $this->put('/api/users/'.$user->id, $dados);
-        echo $this->response->content();
+
         $this->assertResponseOk();
 
         $reposta = (array) json_decode($this->response->content());

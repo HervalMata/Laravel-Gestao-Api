@@ -75,4 +75,5 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('trocas', ['uses' => 'TrocaController@store']);
     $router->get('trocas', ['uses' => 'TrocaController@list']);
     $router->get('trocas/{id}', ['uses' => 'TrocaController@view']);
+    $router->put('trocas/{id}', ['uses' => 'TrocaController@update']);
 });

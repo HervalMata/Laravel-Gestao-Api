@@ -107,4 +107,26 @@ class TrocaTest extends TestCase
             ]
         ]);
     }
+
+    public function testUpdateTroca()
+    {
+        $troca= \App\Troca::first();
+
+        $dados = [
+            'situacao_id' => 2
+        ];
+
+        $this->put('/api/trocas/'.$troca->id, $dados);
+
+        $this->assertResponseOk();
+
+        $reposta = (array) json_decode($this->response->content());
+
+        $this->assertArrayHasKey('situacao_id', $reposta);
+        $this->assertArrayHasKey('id', $reposta);
+
+        $this->seeInDatabase('trocas', [
+            'situacao_id' => $dados['situacao_id']
+        ]);
+    }
 }

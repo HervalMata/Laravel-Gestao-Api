@@ -48,4 +48,18 @@ class TrocaController extends Controller
     {
         return Troca::all();
     }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'situacao_id' => 'required'
+        ]);
+
+        $troca = Troca::find($id);
+
+        $troca->situacao_id = $request->input('situacao_id');
+        $troca->update();
+
+        return $troca;
+    }
 }
