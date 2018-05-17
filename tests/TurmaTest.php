@@ -20,10 +20,10 @@ class TurmaTest extends TestCase
 
         $this->assertResponseOk();
 
-        /*$reposta = (array) json_decode($this->response->content());
+        $reposta = (array) json_decode($this->response->content());
 
         $this->assertArrayHasKey('turma', $reposta);
-        $this->assertArrayHasKey('id', $reposta);*/
+        $this->assertArrayHasKey('id', $reposta);
     }
 
     public function testNotCreateTurmaEmpty()
@@ -62,5 +62,27 @@ class TurmaTest extends TestCase
 
         $this->assertArrayHasKey('turma', $reposta);
         $this->assertArrayHasKey('id', $reposta);
+    }
+
+    public function testUpdateTurma()
+    {
+        $turma = \App\Turma::first();
+
+        $dados = [
+            'turma' => 'G'
+        ];
+
+        $this->put('/api/turmas/'.$turma->id, $dados);
+
+        $this->assertResponseOk();
+
+        $reposta = (array) json_decode($this->response->content());
+
+        $this->assertArrayHasKey('turma', $reposta);
+        $this->assertArrayHasKey('id', $reposta);
+
+        $this->seeInDatabase('turmas', [
+            'turma' => $dados['turma']
+        ]);
     }
 }

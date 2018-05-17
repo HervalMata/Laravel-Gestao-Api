@@ -29,4 +29,18 @@ class TurmaController extends Controller
     {
         return Turma::find($id);
     }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'turma' => 'required|min:1|max:1'
+        ]);
+
+        $turma = Turma::find($id);
+
+        $turma->nome = $request->input('turma');
+        $turma->update();
+
+        return $turma;
+    }
 }
