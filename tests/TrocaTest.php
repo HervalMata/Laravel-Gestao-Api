@@ -84,7 +84,7 @@ class TrocaTest extends TestCase
     public function testAllViewTroca()
     {
         $this->get('/api/trocas/');
-        echo $this->response->content();
+
         $this->assertResponseOk();
 
         /*$this->seeJsonStructure([

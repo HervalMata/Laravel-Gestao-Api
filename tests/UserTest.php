@@ -332,7 +332,7 @@ class UserTest extends TestCase
     public function testAllViewUser()
     {
         $this->get('/api/users/');
-        echo $this->response->content();
+
         $this->assertResponseOk();
 
         /*$this->seeJsonStructure([
@@ -354,6 +354,33 @@ class UserTest extends TestCase
         $this->assertArrayHasKey('ativo', $reposta);
         $this->assertArrayHasKey('perfil', $reposta);
         $this->assertArrayHasKey('id', $reposta);*/
+    }
+
+    public function testLogin()
+    {
+        $dados = [
+            'unidade_id' => 1,
+            'chave' => '1111',
+            'name' => 'Fulano',
+            'email' => 'fulano@gmail.com',
+            'password' => 'Gerente',
+            'password_confirmation' => 'Gerente',
+            'ativo' => true,
+            'perfil_id' => 1
+        ];
+
+        $this->post('/api/users', $dados);
+        echo $this->response->content();
+        $this->assertResponseOk();
+
+        $this->post('/api/login', $dados);
+        $this->assertResponseOk();
+
+        print_r($this->response->content());
+
+        $reposta = (array) json_decode($this->response->content());
+
+        $this->assertArrayHasKey('api_token', $reposta);
     }
 
 }
