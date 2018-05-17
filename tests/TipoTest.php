@@ -1,10 +1,11 @@
 <?php
 
-use Laravel\Lumen\Testing\DatabaseMigrations;
 use Laravel\Lumen\Testing\DatabaseTransactions;
 
 class TipoTest extends TestCase
 {
+    use DatabaseTransactions;
+
     /**
      * A basic test example.
      *

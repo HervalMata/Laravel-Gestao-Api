@@ -46,3 +46,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->put('tipos/{id}', ['uses' => 'TipoController@update']);
     $router->delete('tipos/{id}', ['uses' => 'TipoController@delete']);
 });
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->post('turnos', ['uses' => 'TurnoController@store']);
+});
