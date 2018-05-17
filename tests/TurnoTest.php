@@ -50,4 +50,18 @@ class TurnoTest extends TestCase
         $this->assertResponseStatus(422);
 
     }
+
+    public function testViewTurno()
+    {
+        $turno = \App\Turno::first();
+
+        $this->get('/api/turnos/'.$turno->id);
+
+        $this->assertResponseOk();
+
+        $reposta = (array) json_decode($this->response->content());
+
+        $this->assertArrayHasKey('turno', $reposta);
+        $this->assertArrayHasKey('id', $reposta);
+    }
 }

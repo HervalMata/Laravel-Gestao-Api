@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Laravel\Lumen\Routing\Controller as BaseController;
+
+use App\Turno;
 
 class TurnoController extends Controller
 {
@@ -23,6 +24,11 @@ class TurnoController extends Controller
         $turno->save();
 
         return $turno;
+    }
+
+    public function list()
+    {
+        return Turno::all();
     }
 
 }
