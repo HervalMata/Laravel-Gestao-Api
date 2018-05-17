@@ -115,7 +115,7 @@ class TipoTest extends TestCase
 
     public function testDeleteTipo()
     {
-        $tipo = \App\Tipo::findOrFail(5);
+        $tipo = \App\Tipo::findOrFail(4);
 
         $this->delete('/api/tipos/'.$tipo->id);
 

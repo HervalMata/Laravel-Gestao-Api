@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Situacao;
 
 class SituacaoController extends Controller
@@ -33,7 +34,7 @@ class SituacaoController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'situacao' => 'required|min:1|max:1|unique:situacaos'
+            'situacao' => 'required|min:3|max:20|unique:situacaos'
         ]);
 
         $situacao = Situacao::find($id);

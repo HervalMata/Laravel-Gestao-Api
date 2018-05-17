@@ -112,7 +112,7 @@ class SituacaoTest extends TestCase
 
     public function testNotDeleteSituacao()
     {
-        $situacao = \App\Situacao::first();
+        $situacao = \App\Situacao::findOrFail(2);
 
         $this->delete('/api/situacaos/'.$situacao->id);
 

@@ -101,7 +101,7 @@ class TurnoTest extends TestCase
 
     public function testDeleteTurno()
     {
-        $turno = \App\Turno::findOrFail(5);
+        $turno = \App\Turno::findOrFail(3);
 
         $this->delete('/api/turnos/'.$turno->id);
 

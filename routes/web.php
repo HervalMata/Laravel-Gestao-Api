@@ -62,3 +62,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->put('situacaos/{id}', ['uses' => 'SituacaoController@update']);
     $router->delete('situacaos/{id}', ['uses' => 'SituacaoController@delete']);
 });
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->post('users', ['uses' => 'UserController@store']);
+});

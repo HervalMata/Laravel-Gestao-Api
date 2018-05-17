@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Unidade;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Laravel\Lumen\Routing\Controller as BaseController;
 
 class UnidadeController extends Controller
 {
