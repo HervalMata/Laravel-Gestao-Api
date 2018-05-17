@@ -30,13 +30,4 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         'password',
     ];
 
-    /*public function unidade()
-    {
-        return $this->belongsTo('App\Unidade');
-    }
-
-    public function perfil()
-    {
-        return $this->belongsTo('App\Perfil');
-    }*/
 }

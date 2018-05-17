@@ -27,16 +27,16 @@ class SituacaoTest extends TestCase
     }
 
     public function testNotCreateSituacaoEmpty()
-    {
-        $dados = [
-            'situacao' => ''
-        ];
+{
+    $dados = [
+        'situacao' => ''
+    ];
 
-        $this->post('/api/situacaos', $dados);
+    $this->post('/api/situacaos', $dados);
 
-        $this->assertResponseStatus(422);
+    $this->assertResponseStatus(422);
 
-    }
+}
 
     public function testNotCreateSituacaoNameTooLong()
     {

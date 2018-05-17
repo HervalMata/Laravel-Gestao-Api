@@ -31,4 +31,9 @@ class UserController extends Controller
 
         return $user;
     }
+
+    public function view($id)
+    {
+        return User::find($id);
+    }
 }
