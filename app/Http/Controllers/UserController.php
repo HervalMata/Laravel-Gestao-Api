@@ -63,7 +63,10 @@ class UserController extends Controller
         return $user;
     }
 
-
+    public function list()
+    {
+        return User::all();
+    }
 
     public function delete($id)
     {

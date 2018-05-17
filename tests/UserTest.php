@@ -329,4 +329,23 @@ class UserTest extends TestCase
 
     }
 
+    public function testAllViewUser()
+    {
+        $this->get('/api/users/');
+
+        $this->assertResponseOk();
+
+        $this->seeJsonStructure([
+            '*' => [
+                'id',
+                'unidade_id',
+                'chave',
+                'name',
+                'email',
+                'ativo',
+                'perfil_id'
+            ]
+        ]);
+    }
+
 }
