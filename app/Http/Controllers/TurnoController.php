@@ -50,4 +50,13 @@ class TurnoController extends Controller
         return Turno::all();
     }
 
+    public function delete($id)
+    {
+        if (Turno::destroy($id)) {
+            return new Response('Removido com sucesso.', 200);
+        } else {
+            return new Response('Erro ao remover.', 500);
+        }
+    }
+
 }

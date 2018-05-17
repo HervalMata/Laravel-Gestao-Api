@@ -86,4 +86,26 @@ class TurnoTest extends TestCase
             'turno' => $dados['turno']
         ]);
     }
+
+    public function testDeleteTurno()
+    {
+        $turno = \App\Turno::findOrFail(5);
+
+        $this->delete('/api/turnos/'.$turno->id);
+
+        $this->assertResponseOk();
+
+        $this->assertEquals("Removido com sucesso.", $this->response->content());
+
+    }
+
+    public function testNotDeleteTurno()
+    {
+        $turno = \App\Turno::first();
+
+        $this->delete('/api/turnos/'.$turno->id);
+
+        $this->assertResponseStatus(500);
+
+    }
 }

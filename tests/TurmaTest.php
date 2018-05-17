@@ -117,7 +117,7 @@ class TurmaTest extends TestCase
     {
         $turma = \App\Turma::first();
 
-        $this->delete('/api/perfis/'.$turma->id);
+        $this->delete('/api/turmas/'.$turma->id);
 
         $this->assertResponseStatus(500);
 
