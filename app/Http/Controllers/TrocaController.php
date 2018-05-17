@@ -43,4 +43,9 @@ class TrocaController extends Controller
     {
         return Troca::find($id);
     }
+
+    public function list()
+    {
+        return Troca::all();
+    }
 }

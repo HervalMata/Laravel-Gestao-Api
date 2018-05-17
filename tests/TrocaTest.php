@@ -80,4 +80,31 @@ class TrocaTest extends TestCase
         $this->assertArrayHasKey('situacao_id', $reposta);
         $this->assertArrayHasKey('id', $reposta);
     }
+
+    public function testAllViewTroca()
+    {
+        $this->get('/api/trocas/');
+
+        $this->assertResponseOk();
+
+        $this->seeJsonStructure([
+            '*' => [
+                'id',
+                'unidade_id',
+                'user1_id',
+                'turma1_id',
+                'user2_id',
+                'turma2_id',
+                'data1',
+                'turno1_id',
+                'tipo1_id',
+                'tipo2_id',
+                'data2',
+                'turno2_id',
+                'tipo3_id',
+                'tipo4_id',
+                'situacao_id'
+            ]
+        ]);
+    }
 }
