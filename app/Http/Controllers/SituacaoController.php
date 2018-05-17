@@ -29,4 +29,18 @@ class SituacaoController extends Controller
     {
         return Situacao::find($id);
     }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'situacao' => 'required|min:1|max:1|unique:situacaos'
+        ]);
+
+        $situacao = Situacao::find($id);
+
+        $situacao->situacao = $request->input('situacao');
+        $situacao->update();
+
+        return $situacao;
+    }
 }

@@ -75,4 +75,26 @@ class SituacaoTest extends TestCase
         $this->assertArrayHasKey('situacao', $reposta);
         $this->assertArrayHasKey('id', $reposta);
     }
+
+    public function testUpdateSituacao()
+    {
+        $situacao = \App\Situacao::first();
+
+        $dados = [
+            'situacao' => 'G'
+        ];
+
+        $this->put('/api/situacaos/'.$situacao->id, $dados);
+
+        $this->assertResponseOk();
+
+        $reposta = (array) json_decode($this->response->content());
+
+        $this->assertArrayHasKey('situacao', $reposta);
+        $this->assertArrayHasKey('id', $reposta);
+
+        $this->seeInDatabase('situacaos', [
+            'situacao' => $dados['situacao']
+        ]);
+    }
 }

@@ -37,7 +37,7 @@ class TipoController extends Controller
 
         $tipo = Tipo::find($id);
 
-        $tipo->nome = $request->input('tipo');
+        $tipo->tipo = $request->input('tipo');
         $tipo->update();
 
         return $tipo;

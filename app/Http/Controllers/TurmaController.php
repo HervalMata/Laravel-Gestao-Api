@@ -38,7 +38,7 @@ class TurmaController extends Controller
 
         $turma = Turma::find($id);
 
-        $turma->nome = $request->input('turma');
+        $turma->turma = $request->input('turma');
         $turma->update();
 
         return $turma;

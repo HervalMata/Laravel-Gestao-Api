@@ -39,7 +39,7 @@ class TurnoController extends Controller
 
         $turno = Turno::find($id);
 
-        $turno->nome = $request->input('turno');
+        $turno->turno = $request->input('turno');
         $turno->update();
 
         return $turno;
