@@ -43,7 +43,10 @@ class TipoController extends Controller
         return $tipo;
     }
 
-
+    public function list()
+    {
+        return Tipo::all();
+    }
 
     public function delete($id)
     {

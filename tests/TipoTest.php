@@ -86,6 +86,20 @@ class TipoTest extends TestCase
         ]);
     }
 
+    public function testAllViewTipo()
+    {
+        $this->get('/api/tipos/');
+
+        $this->assertResponseOk();
+
+        $this->seeJsonStructure([
+            '*' => [
+                'id',
+                'tipo',
+            ]
+        ]);
+    }
+
     public function testDeleteTipo()
     {
         $tipo = \App\Tipo::findOrFail(5);

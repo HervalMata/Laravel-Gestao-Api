@@ -41,6 +41,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('tipos', ['uses' => 'TipoController@store']);
+    $router->get('tipos', ['uses' => 'TipoController@list']);
     $router->get('tipos/{id}', ['uses' => 'TipoController@view']);
     $router->put('tipos/{id}', ['uses' => 'TipoController@update']);
     $router->delete('tipos/{id}', ['uses' => 'TipoController@delete']);
