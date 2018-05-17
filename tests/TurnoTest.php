@@ -108,4 +108,18 @@ class TurnoTest extends TestCase
         $this->assertResponseStatus(500);
 
     }
+
+    public function testAllViewTurno()
+    {
+        $this->get('/api/turnos/');
+
+        $this->assertResponseOk();
+
+        $this->seeJsonStructure([
+            '*' => [
+                'id',
+                'turno',
+            ]
+        ]);
+    }
 }

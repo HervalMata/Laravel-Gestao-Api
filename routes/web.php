@@ -49,6 +49,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('turnos', ['uses' => 'TurnoController@store']);
+    $router->get('turnos', ['uses' => 'TurnoController@list']);
     $router->get('turnos/{id}', ['uses' => 'TurnoController@view']);
     $router->put('turnos/{id}', ['uses' => 'TurnoController@update']);
     $router->delete('turnos/{id}', ['uses' => 'TurnoController@delete']);
