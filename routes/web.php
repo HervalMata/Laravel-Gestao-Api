@@ -59,4 +59,5 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('situacaos', ['uses' => 'SituacaoController@store']);
     $router->get('situacaos/{id}', ['uses' => 'SituacaoController@view']);
     $router->put('situacaos/{id}', ['uses' => 'SituacaoController@update']);
+    $router->delete('situacaos/{id}', ['uses' => 'SituacaoController@delete']);
 });

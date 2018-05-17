@@ -43,4 +43,13 @@ class SituacaoController extends Controller
 
         return $situacao;
     }
+
+    public function delete($id)
+    {
+        if (Situacao::destroy($id)) {
+            return new Response('Removido com sucesso.', 200);
+        } else {
+            return new Response('Erro ao remover.', 500);
+        }
+    }
 }

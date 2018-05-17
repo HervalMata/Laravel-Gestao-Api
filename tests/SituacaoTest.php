@@ -81,7 +81,7 @@ class SituacaoTest extends TestCase
         $situacao = \App\Situacao::first();
 
         $dados = [
-            'situacao' => 'G'
+            'situacao' => 'Atrasada'
         ];
 
         $this->put('/api/situacaos/'.$situacao->id, $dados);
@@ -96,5 +96,27 @@ class SituacaoTest extends TestCase
         $this->seeInDatabase('situacaos', [
             'situacao' => $dados['situacao']
         ]);
+    }
+
+    public function testDeleteSituacao()
+    {
+        $situacao = \App\Situacao::findOrFail(5);
+
+        $this->delete('/api/situacaos/'.$situacao->id);
+
+        $this->assertResponseOk();
+
+        $this->assertEquals("Removido com sucesso.", $this->response->content());
+
+    }
+
+    public function testNotDeleteSituacao()
+    {
+        $situacao = \App\Situacao::first();
+
+        $this->delete('/api/situacaos/'.$situacao->id);
+
+        $this->assertResponseStatus(500);
+
     }
 }
