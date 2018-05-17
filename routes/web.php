@@ -66,4 +66,5 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('users', ['uses' => 'UserController@store']);
     $router->get('users/{id}', ['uses' => 'UserController@view']);
+    $router->put('users/{id}', ['uses' => 'UserController@update']);
 });

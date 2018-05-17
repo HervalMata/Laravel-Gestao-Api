@@ -26,7 +26,7 @@ class UserTest extends TestCase
         ];
 
         $this->post('/api/users', $dados);
-        
+
         $this->assertResponseOk();
 
         $reposta = (array) json_decode($this->response->content());
@@ -266,6 +266,45 @@ class UserTest extends TestCase
         $this->assertArrayHasKey('ativo', $reposta);
         $this->assertArrayHasKey('perfil_id', $reposta);
         $this->assertArrayHasKey('id', $reposta);
+    }
+
+    public function testUpdateUser()
+    {
+        $user = \App\User::first();
+
+        $dados = [
+            'unidade_id' => 2,
+            'chave' => 'ooo2',
+            'name' => 'Fulano',
+            'email' => 'fulano@gmail.com',
+            'password' => 'Gerente',
+            'password_confirmation' => 'Gerente',
+            'ativo' => true,
+            'perfil_id' => 1
+        ];
+
+        $this->put('/api/users/'.$user->id, $dados);
+        echo $this->response->content();
+        $this->assertResponseOk();
+
+        $reposta = (array) json_decode($this->response->content());
+
+        $this->assertArrayHasKey('unidade_id', $reposta);
+        $this->assertArrayHasKey('chave', $reposta);
+        $this->assertArrayHasKey('name', $reposta);
+        $this->assertArrayHasKey('email', $reposta);
+        $this->assertArrayHasKey('ativo', $reposta);
+        $this->assertArrayHasKey('perfil_id', $reposta);
+        $this->assertArrayHasKey('id', $reposta);
+
+        $this->seeInDatabase('users', [
+            'unidade_id' => $dados['unidade_id'],
+            'chave'=> $dados['chave'],
+            'name'=> $dados['name'],
+            'email'=> $dados['email'],
+            'ativo'=> $dados['ativo'],
+            'perfil_id'=> $dados['perfil_id'],
+        ]);
     }
 
 }
