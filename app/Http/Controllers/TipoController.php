@@ -42,4 +42,15 @@ class TipoController extends Controller
 
         return $tipo;
     }
+
+
+
+    public function delete($id)
+    {
+        if (Tipo::destroy($id)) {
+            return new Response('Removido com sucesso.', 200);
+        } else {
+            return new Response('Erro ao remover.', 500);
+        }
+    }
 }

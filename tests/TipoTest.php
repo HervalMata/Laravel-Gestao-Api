@@ -85,4 +85,26 @@ class TipoTest extends TestCase
             'tipo' => $dados['tipo']
         ]);
     }
+
+    public function testDeleteTipo()
+    {
+        $tipo = \App\Tipo::findOrFail(5);
+
+        $this->delete('/api/tipos/'.$tipo->id);
+
+        $this->assertResponseOk();
+
+        $this->assertEquals("Removido com sucesso.", $this->response->content());
+
+    }
+
+    public function testNotDeleteTipo()
+    {
+        $tipo = \App\Tipo::first();
+
+        $this->delete('/api/tipos/'.$tipo->id);
+
+        $this->assertResponseStatus(500);
+
+    }
 }
