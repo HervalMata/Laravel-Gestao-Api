@@ -28,4 +28,18 @@ class TipoController extends Controller
     {
         return Tipo::find($id);
     }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'tipo' => 'required|min:2|max:4'
+        ]);
+
+        $tipo = Tipo::find($id);
+
+        $tipo->nome = $request->input('tipo');
+        $tipo->update();
+
+        return $tipo;
+    }
 }

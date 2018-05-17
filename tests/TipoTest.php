@@ -64,5 +64,25 @@ class TipoTest extends TestCase
         $this->assertArrayHasKey('id', $reposta);
     }
 
+    public function testUpdateTipo()
+    {
+        $tipo = \App\Tipo::first();
 
+        $dados = [
+            'tipo' => 'TG'
+        ];
+
+        $this->put('/api/tipos/'.$tipo->id, $dados);
+
+        $this->assertResponseOk();
+
+        $reposta = (array) json_decode($this->response->content());
+
+        $this->assertArrayHasKey('tipo', $reposta);
+        $this->assertArrayHasKey('id', $reposta);
+
+        $this->seeInDatabase('tipos', [
+            'tipo' => $dados['tipo']
+        ]);
+    }
 }
