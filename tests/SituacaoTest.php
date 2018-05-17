@@ -61,4 +61,18 @@ class SituacaoTest extends TestCase
         $this->assertResponseStatus(422);
 
     }
+
+    public function testViewSituacao()
+    {
+        $situacao = \App\Situacao::first();
+
+        $this->get('/api/situacaos/'.$situacao->id);
+
+        $this->assertResponseOk();
+
+        $reposta = (array) json_decode($this->response->content());
+
+        $this->assertArrayHasKey('situacao', $reposta);
+        $this->assertArrayHasKey('id', $reposta);
+    }
 }

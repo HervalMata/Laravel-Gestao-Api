@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Situacao;
+
 class SituacaoController extends Controller
 {
     //
@@ -21,5 +23,10 @@ class SituacaoController extends Controller
         $situacao->save();
 
         return $situacao;
+    }
+
+    public function view($id)
+    {
+        return Situacao::find($id);
     }
 }
