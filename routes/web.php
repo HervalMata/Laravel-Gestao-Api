@@ -33,6 +33,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('turmas', ['uses' => 'TurmaController@store']);
+    $router->get('turmas', ['uses' => 'TurmaController@list']);
     $router->get('turmas/{id}', ['uses' => 'TurmaController@view']);
     $router->put('turmas/{id}', ['uses' => 'TurmaController@update']);
 });

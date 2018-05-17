@@ -85,4 +85,18 @@ class TurmaTest extends TestCase
             'turma' => $dados['turma']
         ]);
     }
+
+    public function testAllViewTurma()
+    {
+        $this->get('/api/turmas/');
+
+        $this->assertResponseOk();
+
+        $this->seeJsonStructure([
+            '*' => [
+                'id',
+                'turma',
+            ]
+        ]);
+    }
 }

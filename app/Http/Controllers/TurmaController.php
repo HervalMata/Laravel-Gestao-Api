@@ -43,4 +43,9 @@ class TurmaController extends Controller
 
         return $turma;
     }
+
+    public function list()
+    {
+        return Turma::all();
+    }
 }
