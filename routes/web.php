@@ -38,3 +38,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->put('turmas/{id}', ['uses' => 'TurmaController@update']);
     $router->delete('turmas/{id}', ['uses' => 'TurmaController@delete']);
 });
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->post('tipos', ['uses' => 'TipoController@store']);
+});

@@ -2,9 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use Laravel\Lumen\Routing\Controller as BaseController;
+use App\Tipo;
 
 class TipoController extends Controller
 {
     //
+    public function __construct()
+    {
+        //
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'tipo' => 'required|min:2|max:4'
+        ]);
+
+        $tipo = new Tipo($request->all());
+        $tipo->save();
+
+        return $tipo;
+    }
 }

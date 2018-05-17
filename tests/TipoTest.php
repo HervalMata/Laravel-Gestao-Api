@@ -10,12 +10,19 @@ class TipoTest extends TestCase
      *
      * @return void
      */
-    public function testExample()
+    public function testCreateTipo()
     {
-        $this->get('/');
+        $dados = [
+            'tipo' => 'DF'
+        ];
 
-        $this->assertEquals(
-            $this->app->version(), $this->response->getContent()
-        );
+        $this->post('/api/tipos', $dados);
+
+        $this->assertResponseOk();
+
+        $reposta = (array) json_decode($this->response->content());
+
+        $this->assertArrayHasKey('tipo', $reposta);
+        $this->assertArrayHasKey('id', $reposta);
     }
 }
