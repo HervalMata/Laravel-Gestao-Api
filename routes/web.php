@@ -41,4 +41,5 @@ $router->group(['prefix' => 'api'], function () use ($router) {
 
 $router->group(['prefix' => 'api'], function () use ($router) {
     $router->post('tipos', ['uses' => 'TipoController@store']);
+    $router->get('tipos/{id}', ['uses' => 'TipoController@view']);
 });

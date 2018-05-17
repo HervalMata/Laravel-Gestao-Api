@@ -23,4 +23,9 @@ class TipoController extends Controller
 
         return $tipo;
     }
+
+    public function view($id)
+    {
+        return Tipo::find($id);
+    }
 }
