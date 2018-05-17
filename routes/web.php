@@ -70,3 +70,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->put('users/{id}', ['uses' => 'UserController@update']);
     $router->delete('users/{id}', ['uses' => 'UserController@delete']);
 });
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->post('trocas', ['uses' => 'TrocaController@store']);
+});
