@@ -48,4 +48,13 @@ class TurmaController extends Controller
     {
         return Turma::all();
     }
+
+    public function delete($id)
+    {
+        if (Turma::destroy($id)) {
+            return new Response('Removido com sucesso.', 200);
+        } else {
+            return new Response('Erro ao remover.', 500);
+        }
+    }
 }

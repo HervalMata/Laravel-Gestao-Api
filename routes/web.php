@@ -36,4 +36,5 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->get('turmas', ['uses' => 'TurmaController@list']);
     $router->get('turmas/{id}', ['uses' => 'TurmaController@view']);
     $router->put('turmas/{id}', ['uses' => 'TurmaController@update']);
+    $router->delete('turmas/{id}', ['uses' => 'TurmaController@delete']);
 });

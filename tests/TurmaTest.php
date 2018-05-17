@@ -99,4 +99,26 @@ class TurmaTest extends TestCase
             ]
         ]);
     }
+
+    public function testDeleteTurma()
+    {
+        $turma = \App\Turma::findOrFail(5);
+
+        $this->delete('/api/turmas/'.$turma->id);
+
+        $this->assertResponseOk();
+
+        $this->assertEquals("Removido com sucesso.", $this->response->content());
+
+    }
+
+    public function testNotDeleteTurma()
+    {
+        $turma = \App\Turma::first();
+
+        $this->delete('/api/perfis/'.$turma->id);
+
+        $this->assertResponseStatus(500);
+
+    }
 }
