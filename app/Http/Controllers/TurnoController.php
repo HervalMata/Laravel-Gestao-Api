@@ -26,6 +26,25 @@ class TurnoController extends Controller
         return $turno;
     }
 
+    public function view($id)
+    {
+        return Turno::find($id);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'turno' => 'required|min:8|max:8'
+        ]);
+
+        $turno = Turno::find($id);
+
+        $turno->nome = $request->input('turno');
+        $turno->update();
+
+        return $turno;
+    }
+
     public function list()
     {
         return Turno::all();

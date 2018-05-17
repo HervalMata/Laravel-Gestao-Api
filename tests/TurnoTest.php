@@ -64,4 +64,26 @@ class TurnoTest extends TestCase
         $this->assertArrayHasKey('turno', $reposta);
         $this->assertArrayHasKey('id', $reposta);
     }
+
+    public function testUpdateTurno()
+    {
+        $turno = \App\Turno::first();
+
+        $dados = [
+            'turno' => '4º Turno'
+        ];
+
+        $this->put('/api/turnos/'.$turno->id, $dados);
+
+        $this->assertResponseOk();
+
+        $reposta = (array) json_decode($this->response->content());
+
+        $this->assertArrayHasKey('turno', $reposta);
+        $this->assertArrayHasKey('id', $reposta);
+
+        $this->seeInDatabase('turnos', [
+            'turno' => $dados['turno']
+        ]);
+    }
 }
