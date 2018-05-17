@@ -9,9 +9,10 @@ use App\Troca;
 class TrocaController extends Controller
 {
     //
-    public function __construct()
+    public function __construct(Troca $troca)
     {
         //
+        $this->troca = $troca;
     }
 
     public function store(Request $request)
@@ -44,9 +45,85 @@ class TrocaController extends Controller
         return Troca::find($id);
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        return Troca::all();
+        $user1_id = $situacao_id = $turma1_id = $unidade_id = '';
+        $column = 'trocas.data1';
+        $direction = 'asc';
+        $per_page = 10;
+
+        if ($request->has('per_page')) {
+            $per_page = $request->input('per_page');
+        }
+
+        if ($request->has('direction')) {
+            $direction = $request->input('direction');
+        }
+
+        if ($request->has('column')) {
+            $column = $request->input('column');
+        }
+
+        $trocas = $this->troca->orderBy($column, $direction)
+            ->join('users AS users1', 'users1.id', '=', 'trocas.user1_id')
+            ->join('users AS users2', 'users2.id', '=', 'trocas.user2_id')
+            ->join('turmas AS turmas1', 'turmas1.id', '=', 'trocas.turma1_id')
+            ->join('turmas AS turmas2', 'turmas2.id', '=', 'trocas.turma2_id')
+            ->join('turnos AS turnos1', 'turnos1.id', '=', 'trocas.turno1_id')
+            ->join('turnos AS turnos2', 'turnos2.id', '=', 'trocas.turno2_id')
+            ->join('tipos AS tipos1', 'tipos1.id', '=', 'trocas.tipo1_id')
+            ->join('tipos AS tipos2', 'tipos2.id', '=', 'trocas.tipo2_id')
+            ->join('tipos AS tipos3', 'tipos3.id', '=', 'trocas.tipo3_id')
+            ->join('tipos AS tipos4', 'tipos4.id', '=', 'trocas.tipo4_id')
+            ->join('situacaos', 'situacaos.id', '=', 'trocas.situacao_id')
+            ->join('unidades', 'unidades.id', '=', 'trocas.unidade_id')
+            ->select('unidades.nome AS unidade', 'users1.name AS Usuario1', 'turmas1.turma AS Turma1', 'users2.name AS Usuario2', 'turmas2.turma AS Turma2 ',
+                        'data1', 'turnos1.turno AS Turno1', 'tipos1.tipo AS Tipo1', 'tipos2.tipo AS Tipo2', 'data2', 'turnos2.turno AS Turno2',
+                'tipos3.tipo AS Tipo3',  'tipos4.tipo AS Tipo4', 'situacaos.situacao AS situacao');
+
+        if ($request->has('user1_id')) {
+            $trocas = $trocas->where('users.name', 'LIKE', "%" . $request->input('users1_id') . "%");
+            $user1_id = $request->input('users1_id');
+        }
+
+        if ($request->has('turma1_id')) {
+            $trocas = $trocas->where('turmas.turma', 'LIKE', "%" . $request->input('turma1_id') . "%");
+            $turma1_id = $request->input('turma1_id');
+        }
+
+        if ($request->has('unidade_id')) {
+            $trocas = $trocas->where('unidades.nome', 'LIKE', "%" . $request->input('unidade_id') . "%");
+            $unidade_id = $request->input('unidade_id');
+        }
+
+        if ($request->has('situacao_id')) {
+            $trocas = $trocas->where('situacaos.situacao', 'LIKE', "%" . $request->input('situacao_id') . "%");
+            $situacao_id = $request->input('situacao_id');
+        }
+
+        $trocas = $trocas->paginate($per_page);
+
+        $response = [
+            'trocas' => $trocas,
+            'params' => [
+                'total' => $trocas->total(),
+                'per_page' => $trocas->perPage(),
+                'current_page' => $trocas->currentPage(),
+                'last_page' => $trocas->lastPage(),
+                'next_page_url' => $trocas->nextPageUrl(),
+                'prev_page_url' => $trocas->previousPageUrl(),
+                'direction' => $direction,
+                'column' => $column,
+            ],
+            'filters' => [
+                'user1_id' => $user1_id,
+                'unidade_id' => $unidade_id,
+                'turma1_id' => $turma1_id,
+                'situacao_id' => $situacao_id
+            ]
+        ];
+        return response()->json($response);
+        //return Troca::all();
     }
 
     public function update(Request $request, $id)
