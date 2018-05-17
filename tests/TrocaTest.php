@@ -32,7 +32,34 @@ class TrocaTest extends TestCase
         ];
 
         $this->post('/api/trocas', $dados);
-        echo $this->response->content();
+
+        $this->assertResponseOk();
+
+        $reposta = (array) json_decode($this->response->content());
+
+        $this->assertArrayHasKey('unidade_id', $reposta);
+        $this->assertArrayHasKey('user1_id', $reposta);
+        $this->assertArrayHasKey('turma1_id', $reposta);
+        $this->assertArrayHasKey('user2_id', $reposta);
+        $this->assertArrayHasKey('turma2_id', $reposta);
+        $this->assertArrayHasKey('data1', $reposta);
+        $this->assertArrayHasKey('turno1_id', $reposta);
+        $this->assertArrayHasKey('tipo1_id', $reposta);
+        $this->assertArrayHasKey('tipo2_id', $reposta);
+        $this->assertArrayHasKey('data2', $reposta);
+        $this->assertArrayHasKey('turno2_id', $reposta);
+        $this->assertArrayHasKey('tipo3_id', $reposta);
+        $this->assertArrayHasKey('tipo4_id', $reposta);
+        $this->assertArrayHasKey('situacao_id', $reposta);
+        $this->assertArrayHasKey('id', $reposta);
+    }
+
+    public function testViewTroca()
+    {
+        $troca = \App\Troca::first();
+
+        $this->get('/api/trocas/'.$troca->id);
+
         $this->assertResponseOk();
 
         $reposta = (array) json_decode($this->response->content());

@@ -38,4 +38,9 @@ class TrocaController extends Controller
 
         return $troca;
     }
+
+    public function view($id)
+    {
+        return Troca::find($id);
+    }
 }
