@@ -119,4 +119,18 @@ class SituacaoTest extends TestCase
         $this->assertResponseStatus(500);
 
     }
+
+    public function testAllViewSituacao()
+    {
+        $this->get('/api/situacaos/');
+
+        $this->assertResponseOk();
+
+        $this->seeJsonStructure([
+            '*' => [
+                'id',
+                'situacao',
+            ]
+        ]);
+    }
 }

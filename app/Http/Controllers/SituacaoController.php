@@ -44,6 +44,11 @@ class SituacaoController extends Controller
         return $situacao;
     }
 
+    public function list()
+    {
+        return Situacao::all();
+    }
+
     public function delete($id)
     {
         if (Situacao::destroy($id)) {
