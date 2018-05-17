@@ -51,6 +51,18 @@ class TipoTest extends TestCase
 
     }
 
+    public function testNotCreateTipoNameNotUnique()
+    {
+        $dados = [
+            'tipo' => 'TT'
+        ];
+
+        $this->post('/api/tipos', $dados);
+
+        $this->assertResponseStatus(422);
+
+    }
+
     public function testViewTipo()
     {
         $tipo = \App\Tipo::first();

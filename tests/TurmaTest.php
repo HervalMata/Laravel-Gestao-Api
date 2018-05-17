@@ -51,6 +51,18 @@ class TurmaTest extends TestCase
 
     }
 
+    public function testNotCreateTurmaNameNotUnique()
+    {
+        $dados = [
+            'turma' => 'A'
+        ];
+
+        $this->post('/api/turmas', $dados);
+
+        $this->assertResponseStatus(422);
+
+    }
+
     public function testViewTurma()
     {
         $turma = \App\Turma::first();

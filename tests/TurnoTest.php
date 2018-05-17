@@ -51,6 +51,18 @@ class TurnoTest extends TestCase
 
     }
 
+    public function testNotCreateTurnoNameNotUnique()
+    {
+        $dados = [
+            'turno' => '1º Turno'
+        ];
+
+        $this->post('/api/turnos', $dados);
+
+        $this->assertResponseStatus(422);
+
+    }
+
     public function testViewTurno()
     {
         $turno = \App\Turno::first();

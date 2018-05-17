@@ -17,7 +17,7 @@ class TurnoController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'turno' => 'required|min:8|max:8'
+            'turno' => 'required|min:8|max:8|unique:turnos'
         ]);
 
         $turno = new Turno($request->all());

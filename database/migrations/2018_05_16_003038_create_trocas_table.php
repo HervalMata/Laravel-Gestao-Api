@@ -42,7 +42,7 @@ class CreateTrocasTable extends Migration
             $table->foreign('tipo2_id')->references('id')->on('tipos')->onDelete('restrict');
             $table->foreign('tipo3_id')->references('id')->on('tipos')->onDelete('restrict');
             $table->foreign('tipo4_id')->references('id')->on('tipos')->onDelete('restrict');
-            $table->foreign('situacao_id')->references('id')->on('situacoes')->onDelete('restrict');
+            $table->foreign('situacao_id')->references('id')->on('situacaos')->onDelete('restrict');
         });
     }
 

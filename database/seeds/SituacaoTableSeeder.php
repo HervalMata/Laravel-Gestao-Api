@@ -13,25 +13,25 @@ class SituacaoTableSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('situacoes')->insert([
+        DB::table('situacaos')->insert([
             'situacao' => 'Autorizada'
         ]);
-        DB::table('situacoes')->insert([
+        DB::table('situacaos')->insert([
             'situacao' => 'Cadastrada'
         ]);
-        DB::table('situacoes')->insert([
+        DB::table('situacaos')->insert([
             'situacao' => 'Cancelada'
         ]);
-        DB::table('situacoes')->insert([
+        DB::table('situacaos')->insert([
             'situacao' => 'Concluída'
         ]);
-        DB::table('situacoes')->insert([
+        DB::table('situacaos')->insert([
             'situacao' => 'Confirmada'
         ]);
-        DB::table('situacoes')->insert([
+        DB::table('situacaos')->insert([
             'situacao' => 'Pendente'
         ]);
-        DB::table('situacoes')->insert([
+        DB::table('situacaos')->insert([
             'situacao' => 'Rejeitada'
         ]);
     }

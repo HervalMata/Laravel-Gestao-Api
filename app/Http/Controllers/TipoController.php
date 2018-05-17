@@ -15,7 +15,7 @@ class TipoController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'tipo' => 'required|min:2|max:4'
+            'tipo' => 'required|min:2|max:4|unique:tipos'
         ]);
 
         $tipo = new Tipo($request->all());

@@ -13,9 +13,9 @@ class CreateSituacoesTable extends Migration
      */
     public function up()
     {
-        Schema::create('situacoes', function (Blueprint $table) {
+        Schema::create('situacaos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('situacao');
+            $table->string('situacao', 20)->unique();
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateSituacoesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('situacoes');
+        Schema::dropIfExists('situacaos');
     }
 }

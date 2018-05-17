@@ -16,7 +16,7 @@ class TurmaController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'turma' => 'required|min:1|max:1'
+            'turma' => 'required|min:1|max:1|unique:turmas'
         ]);
 
         $turma = new Turma($request->all());
