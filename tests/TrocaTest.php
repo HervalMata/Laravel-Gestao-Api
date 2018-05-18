@@ -114,6 +114,14 @@ class TrocaTest extends TestCase
 
     }
 
+    public function testAllViewTrocaAutorizada()
+    {
+        $this->get('/api/trocas/autorizadas', $this->api_token);
+
+        $this->assertResponseOk();
+
+    }
+
     public function testUpdateTroca()
     {
         $troca= \App\Troca::first();
