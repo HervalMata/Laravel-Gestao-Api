@@ -80,6 +80,7 @@ $router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($ro
     $router->get('trocas/{id}', ['uses' => 'TrocaController@view']);
     $router->put('trocas/{id}', ['uses' => 'TrocaController@update']);
     $router->put('trocas/confirmar/{id}', ['uses' => 'TrocaController@updateConfirmadas']);
+    $router->put('trocas/rejeitar/{id}', ['uses' => 'TrocaController@updateRejeitadas']);
 });
 
 $router->post('/api/login', 'UserController@login');

@@ -345,4 +345,18 @@ class TrocaController extends Controller
 
         return $troca;
     }
+
+    public function updateRejeitadas(Request $request, $id)
+    {
+        $this->validate($request, [
+            'situacao_id' => 'required'
+        ]);
+
+        $troca = Troca::find($id);
+
+        $troca->situacao_id = $request->input('situacao_id');
+        $troca->update();
+
+        return $troca;
+    }
 }
