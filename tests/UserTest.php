@@ -1,11 +1,20 @@
 <?php
 
+use App\User;
 use Laravel\Lumen\Testing\DatabaseTransactions;
 
 class UserTest extends TestCase
 {
 
     use DatabaseTransactions;
+
+    public $api_token = [];
+
+    public function __construct(?string $name = null, array $data = [], string $dataName = '')
+    {
+        parent::__construct($name, $data, $dataName);
+        $this->api_token = ['api_token' => User::where('api_token', '<>', '')->first()->api_token];
+    }
 
     /**
      * A basic test example.
@@ -22,10 +31,10 @@ class UserTest extends TestCase
             'password' => 'Gerente',
             'password_confirmation' => 'Gerente',
             'ativo' => true,
-            'perfil_id' => 1
+            'perfil_id' => 1,
         ];
 
-        $this->post('/api/users', $dados);
+        $this->post('/api/users', $dados, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -50,10 +59,10 @@ class UserTest extends TestCase
             'password' => 'Gerente',
             'password_confirmation' => 'Gerente',
             'ativo' => true,
-            'perfil_id' => 1
+            'perfil_id' => 1,
         ];
 
-        $this->post('/api/situacaos', $dados);
+        $this->post('/api/situacaos', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -69,10 +78,10 @@ class UserTest extends TestCase
             'password' => 'Gerente',
             'password_confirmation' => 'Gerente',
             'ativo' => true,
-            'perfil_id' => 1
+            'perfil_id' => 1,
         ];
 
-        $this->post('/api/situacaos', $dados);
+        $this->post('/api/situacaos', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -88,10 +97,10 @@ class UserTest extends TestCase
             'password' => 'Gerente',
             'password_confirmation' => 'Gerente',
             'ativo' => true,
-            'perfil_id' => 1
+            'perfil_id' => 1,
         ];
 
-        $this->post('/api/situacaos', $dados);
+        $this->post('/api/situacaos', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -107,10 +116,10 @@ class UserTest extends TestCase
             'password' => 'Gerente',
             'password_confirmation' => 'Gerente',
             'ativo' => true,
-            'perfil_id' => 1
+            'perfil_id' => 1,
         ];
 
-        $this->post('/api/situacaos', $dados);
+        $this->post('/api/situacaos', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -126,10 +135,10 @@ class UserTest extends TestCase
             'password' => 'Gerente',
             'password_confirmation' => 'Gerente',
             'ativo' => true,
-            'perfil_id' => 1
+            'perfil_id' => 1,
         ];
 
-        $this->post('/api/situacaos', $dados);
+        $this->post('/api/situacaos', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -145,10 +154,10 @@ class UserTest extends TestCase
             'password' => 'Gerente',
             'password_confirmation' => 'Gerente',
             'ativo' => true,
-            'perfil_id' => 1
+            'perfil_id' => 1,
         ];
 
-        $this->post('/api/situacaos', $dados);
+        $this->post('/api/situacaos', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -164,10 +173,10 @@ class UserTest extends TestCase
             'password' => 'Gerente',
             'password_confirmation' => 'Gerente',
             'ativo' => true,
-            'perfil_id' => 1
+            'perfil_id' => 1,
         ];
 
-        $this->post('/api/situacaos', $dados);
+        $this->post('/api/situacaos', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -183,10 +192,10 @@ class UserTest extends TestCase
             'password' => 'Gerente',
             'password_confirmation' => 'Gerente',
             'ativo' => true,
-            'perfil_id' => null
+            'perfil_id' => null,
         ];
 
-        $this->post('/api/situacaos', $dados);
+        $this->post('/api/situacaos', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -202,10 +211,10 @@ class UserTest extends TestCase
             'password' => '',
             'password_confirmation' => '',
             'ativo' => true,
-            'perfil_id' => 2
+            'perfil_id' => 2,
         ];
 
-        $this->post('/api/situacaos', $dados);
+        $this->post('/api/situacaos', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -221,10 +230,10 @@ class UserTest extends TestCase
             'password' => 'Gerente',
             'password_confirmation' => '123',
             'ativo' => true,
-            'perfil_id' => 2
+            'perfil_id' => 2,
         ];
 
-        $this->post('/api/situacaos', $dados);
+        $this->post('/api/situacaos', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -240,10 +249,10 @@ class UserTest extends TestCase
             'password' => 'Gerente',
             'password_confirmation' => 'Gerente',
             'ativo' => true,
-            'perfil_id' => 1
+            'perfil_id' => 1,
         ];
 
-        $this->post('/api/situacaos', $dados);
+        $this->post('/api/situacaos', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -253,7 +262,7 @@ class UserTest extends TestCase
     {
         $user = \App\User::first();
 
-        $this->get('/api/users/'.$user->id);
+        $this->get('/api/users/'.$user->id, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -280,10 +289,10 @@ class UserTest extends TestCase
             'password' => 'Gerente',
             'password_confirmation' => 'Gerente',
             'ativo' => true,
-            'perfil_id' => 1
+            'perfil_id' => 1,
         ];
 
-        $this->put('/api/users/'.$user->id, $dados);
+        $this->put('/api/users/'.$user->id, $dados, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -311,7 +320,7 @@ class UserTest extends TestCase
     {
         $user = \App\User::findOrFail(5);
 
-        $this->delete('/api/users/'.$user->id);
+        $this->delete('/api/users/'.$user->id, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -323,7 +332,7 @@ class UserTest extends TestCase
     {
         $user = \App\User::findOrFail(7);
 
-        $this->delete('/api/users/'.$user->id);
+        $this->delete('/api/users/'.$user->id, $this->api_token);
 
         $this->assertResponseStatus(500);
 
@@ -331,7 +340,7 @@ class UserTest extends TestCase
 
     public function testAllViewUser()
     {
-        $this->get('/api/users/');
+        $this->get('/api/users/', $this->api_token);
 
         $this->assertResponseOk();
 
@@ -344,8 +353,8 @@ class UserTest extends TestCase
                 'ativo',
                 'perfil'
             ]]
-        ]);*/
-        /*$reposta = (array) json_decode($this->response->content());
+        ]);
+        $reposta = (array) json_decode($this->response->content());
 
         $this->assertArrayHasKey('unidade', $reposta);
         $this->assertArrayHasKey('chave', $reposta);
@@ -366,14 +375,15 @@ class UserTest extends TestCase
             'password' => 'Gerente',
             'password_confirmation' => 'Gerente',
             'ativo' => true,
-            'perfil_id' => 1
+            'perfil_id' => 1,
         ];
 
-        $this->post('/api/users', $dados);
-        echo $this->response->content();
+        $this->post('/api/users', $dados, $this->api_token);
+
         $this->assertResponseOk();
 
         $this->post('/api/login', $dados);
+
         $this->assertResponseOk();
 
         print_r($this->response->content());

@@ -1,11 +1,19 @@
 <?php
 
+use App\User;
 use Laravel\Lumen\Testing\DatabaseTransactions;
 
 class TipoTest extends TestCase
 {
     use DatabaseTransactions;
 
+    public $api_token = [];
+
+    public function __construct(?string $name = null, array $data = [], string $dataName = '')
+    {
+        parent::__construct($name, $data, $dataName);
+        $this->api_token = ['api_token' => User::where('api_token', '<>', '')->first()->api_token];
+    }
     /**
      * A basic test example.
      *
@@ -17,7 +25,7 @@ class TipoTest extends TestCase
             'tipo' => 'DF'
         ];
 
-        $this->post('/api/tipos', $dados);
+        $this->post('/api/tipos', $dados,  $this->api_token);
 
         $this->assertResponseOk();
 
@@ -33,7 +41,7 @@ class TipoTest extends TestCase
             'tipo' => ''
         ];
 
-        $this->post('/api/tipos', $dados);
+        $this->post('/api/tipos', $dados,  $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -45,7 +53,7 @@ class TipoTest extends TestCase
             'nome' => 'ffddf'
         ];
 
-        $this->post('/api/tipos', $dados);
+        $this->post('/api/tipos', $dados,  $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -57,7 +65,7 @@ class TipoTest extends TestCase
             'tipo' => 'TT'
         ];
 
-        $this->post('/api/tipos', $dados);
+        $this->post('/api/tipos', $dados,  $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -67,7 +75,7 @@ class TipoTest extends TestCase
     {
         $tipo = \App\Tipo::first();
 
-        $this->get('/api/tipos/'.$tipo->id);
+        $this->get('/api/tipos/'.$tipo->id,  $this->api_token);
 
         $this->assertResponseOk();
 
@@ -85,7 +93,7 @@ class TipoTest extends TestCase
             'tipo' => 'TG'
         ];
 
-        $this->put('/api/tipos/'.$tipo->id, $dados);
+        $this->put('/api/tipos/'.$tipo->id, $dados,  $this->api_token);
 
         $this->assertResponseOk();
 
@@ -101,7 +109,7 @@ class TipoTest extends TestCase
 
     public function testAllViewTipo()
     {
-        $this->get('/api/tipos/');
+        $this->get('/api/tipos/', $this->api_token);
 
         $this->assertResponseOk();
 
@@ -117,7 +125,7 @@ class TipoTest extends TestCase
     {
         $tipo = \App\Tipo::findOrFail(4);
 
-        $this->delete('/api/tipos/'.$tipo->id);
+        $this->delete('/api/tipos/'.$tipo->id, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -129,7 +137,7 @@ class TipoTest extends TestCase
     {
         $tipo = \App\Tipo::first();
 
-        $this->delete('/api/tipos/'.$tipo->id);
+        $this->delete('/api/tipos/'.$tipo->id, $this->api_token);
 
         $this->assertResponseStatus(500);
 

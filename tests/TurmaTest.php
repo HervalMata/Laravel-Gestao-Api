@@ -1,11 +1,19 @@
 <?php
 
+use App\User;
 use Laravel\Lumen\Testing\DatabaseTransactions;
 
 class TurmaTest extends TestCase
 {
     use DatabaseTransactions;
 
+    public $api_token = [];
+
+    public function __construct(?string $name = null, array $data = [], string $dataName = '')
+    {
+        parent::__construct($name, $data, $dataName);
+        $this->api_token = ['api_token' => User::where('api_token', '<>', '')->first()->api_token];
+    }
     /**
      * A basic test example.
      *
@@ -17,7 +25,7 @@ class TurmaTest extends TestCase
             'turma' => 'F'
         ];
 
-        $this->post('/api/turmas', $dados);
+        $this->post('/api/turmas', $dados, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -33,7 +41,7 @@ class TurmaTest extends TestCase
             'turma' => ''
         ];
 
-        $this->post('/api/turmas', $dados);
+        $this->post('/api/turmas', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -45,7 +53,7 @@ class TurmaTest extends TestCase
             'nome' => 'ff'
         ];
 
-        $this->post('/api/turmas', $dados);
+        $this->post('/api/turmas', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -57,7 +65,7 @@ class TurmaTest extends TestCase
             'turma' => 'A'
         ];
 
-        $this->post('/api/turmas', $dados);
+        $this->post('/api/turmas', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -67,7 +75,7 @@ class TurmaTest extends TestCase
     {
         $turma = \App\Turma::first();
 
-        $this->get('/api/turmas/'.$turma->id);
+        $this->get('/api/turmas/'.$turma->id, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -85,7 +93,7 @@ class TurmaTest extends TestCase
             'turma' => 'G'
         ];
 
-        $this->put('/api/turmas/'.$turma->id, $dados);
+        $this->put('/api/turmas/'.$turma->id, $dados, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -101,7 +109,7 @@ class TurmaTest extends TestCase
 
     public function testAllViewTurma()
     {
-        $this->get('/api/turmas/');
+        $this->get('/api/turmas/', $this->api_token);
 
         $this->assertResponseOk();
 
@@ -117,7 +125,7 @@ class TurmaTest extends TestCase
     {
         $turma = \App\Turma::findOrFail(5);
 
-        $this->delete('/api/turmas/'.$turma->id);
+        $this->delete('/api/turmas/'.$turma->id, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -129,7 +137,7 @@ class TurmaTest extends TestCase
     {
         $turma = \App\Turma::first();
 
-        $this->delete('/api/turmas/'.$turma->id);
+        $this->delete('/api/turmas/'.$turma->id, $this->api_token);
 
         $this->assertResponseStatus(500);
 

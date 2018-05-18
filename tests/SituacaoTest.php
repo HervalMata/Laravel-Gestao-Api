@@ -1,10 +1,19 @@
 <?php
 
+use App\User;
 use Laravel\Lumen\Testing\DatabaseTransactions;
 
 class SituacaoTest extends TestCase
 {
     use DatabaseTransactions;
+
+    public $api_token = [];
+
+    public function __construct(?string $name = null, array $data = [], string $dataName = '')
+    {
+        parent::__construct($name, $data, $dataName);
+        $this->api_token = ['api_token' => User::where('api_token', '<>', '')->first()->api_token];
+    }
     /**
      * A basic test example.
      *
@@ -16,7 +25,7 @@ class SituacaoTest extends TestCase
             'situacao' => 'Atrasada'
         ];
 
-        $this->post('/api/situacaos', $dados);
+        $this->post('/api/situacaos', $dados, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -32,7 +41,7 @@ class SituacaoTest extends TestCase
         'situacao' => ''
     ];
 
-    $this->post('/api/situacaos', $dados);
+    $this->post('/api/situacaos', $dados, $this->api_token);
 
     $this->assertResponseStatus(422);
 
@@ -44,7 +53,7 @@ class SituacaoTest extends TestCase
             'situacao' => 'AtrasadaAtrasadaAtrasadaAtrasada'
         ];
 
-        $this->post('/api/situacaos', $dados);
+        $this->post('/api/situacaos', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -56,7 +65,7 @@ class SituacaoTest extends TestCase
             'situacao' => 'Autorizada'
         ];
 
-        $this->post('/api/situacaos', $dados);
+        $this->post('/api/situacaos', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -66,7 +75,7 @@ class SituacaoTest extends TestCase
     {
         $situacao = \App\Situacao::first();
 
-        $this->get('/api/situacaos/'.$situacao->id);
+        $this->get('/api/situacaos/'.$situacao->id, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -84,7 +93,7 @@ class SituacaoTest extends TestCase
             'situacao' => 'Atrasada'
         ];
 
-        $this->put('/api/situacaos/'.$situacao->id, $dados);
+        $this->put('/api/situacaos/'.$situacao->id, $dados, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -102,7 +111,7 @@ class SituacaoTest extends TestCase
     {
         $situacao = \App\Situacao::findOrFail(5);
 
-        $this->delete('/api/situacaos/'.$situacao->id);
+        $this->delete('/api/situacaos/'.$situacao->id, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -114,7 +123,7 @@ class SituacaoTest extends TestCase
     {
         $situacao = \App\Situacao::findOrFail(2);
 
-        $this->delete('/api/situacaos/'.$situacao->id);
+        $this->delete('/api/situacaos/'.$situacao->id, $this->api_token);
 
         $this->assertResponseStatus(500);
 
@@ -122,7 +131,7 @@ class SituacaoTest extends TestCase
 
     public function testAllViewSituacao()
     {
-        $this->get('/api/situacaos/');
+        $this->get('/api/situacaos/', $this->api_token);
 
         $this->assertResponseOk();
 

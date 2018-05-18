@@ -1,11 +1,19 @@
 <?php
 
+use App\User;
 use Laravel\Lumen\Testing\DatabaseTransactions;
 
 class TurnoTest extends TestCase
 {
     use DatabaseTransactions;
 
+    public $api_token = [];
+
+    public function __construct(?string $name = null, array $data = [], string $dataName = '')
+    {
+        parent::__construct($name, $data, $dataName);
+        $this->api_token = ['api_token' => User::where('api_token', '<>', '')->first()->api_token];
+    }
     /**
      * A basic test example.
      *
@@ -17,7 +25,7 @@ class TurnoTest extends TestCase
             'turno' => '4º Turno'
         ];
 
-        $this->post('/api/turnos', $dados);
+        $this->post('/api/turnos', $dados, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -33,7 +41,7 @@ class TurnoTest extends TestCase
             'turno' => ''
         ];
 
-        $this->post('/api/turnos', $dados);
+        $this->post('/api/turnos', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -45,7 +53,7 @@ class TurnoTest extends TestCase
             'turno' => 'Turno Turno '
         ];
 
-        $this->post('/api/turnos', $dados);
+        $this->post('/api/turnos', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -57,7 +65,7 @@ class TurnoTest extends TestCase
             'turno' => '1º Turno'
         ];
 
-        $this->post('/api/turnos', $dados);
+        $this->post('/api/turnos', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -67,7 +75,7 @@ class TurnoTest extends TestCase
     {
         $turno = \App\Turno::first();
 
-        $this->get('/api/turnos/'.$turno->id);
+        $this->get('/api/turnos/'.$turno->id, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -85,7 +93,7 @@ class TurnoTest extends TestCase
             'turno' => '4º Turno'
         ];
 
-        $this->put('/api/turnos/'.$turno->id, $dados);
+        $this->put('/api/turnos/'.$turno->id, $dados, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -103,7 +111,7 @@ class TurnoTest extends TestCase
     {
         $turno = \App\Turno::findOrFail(3);
 
-        $this->delete('/api/turnos/'.$turno->id);
+        $this->delete('/api/turnos/'.$turno->id, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -115,7 +123,7 @@ class TurnoTest extends TestCase
     {
         $turno = \App\Turno::first();
 
-        $this->delete('/api/turnos/'.$turno->id);
+        $this->delete('/api/turnos/'.$turno->id, $this->api_token);
 
         $this->assertResponseStatus(500);
 
@@ -123,7 +131,7 @@ class TurnoTest extends TestCase
 
     public function testAllViewTurno()
     {
-        $this->get('/api/turnos/');
+        $this->get('/api/turnos/', $this->api_token);
 
         $this->assertResponseOk();
 

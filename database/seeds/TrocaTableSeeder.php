@@ -28,6 +28,8 @@ class TrocaTableSeeder extends Seeder
             'tipo3_id' => 2,
             'tipo4_id' => 1,
             'situacao_id' => 2,
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('trocas')->insert([
             'unidade_id' => 2,
@@ -44,6 +46,8 @@ class TrocaTableSeeder extends Seeder
             'tipo3_id' => 1,
             'tipo4_id' => 2,
             'situacao_id' => 2,
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('trocas')->insert([
             'unidade_id' => 2,
@@ -60,6 +64,8 @@ class TrocaTableSeeder extends Seeder
             'tipo3_id' => 2,
             'tipo4_id' => 1,
             'situacao_id' => 2,
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('trocas')->insert([
             'unidade_id' => 2,
@@ -76,6 +82,8 @@ class TrocaTableSeeder extends Seeder
             'tipo3_id' => 1,
             'tipo4_id' => 2,
             'situacao_id' => 2,
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('trocas')->insert([
             'unidade_id' => 3,
@@ -92,6 +100,8 @@ class TrocaTableSeeder extends Seeder
             'tipo3_id' => 2,
             'tipo4_id' => 1,
             'situacao_id' => 2,
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('trocas')->insert([
             'unidade_id' => 3,
@@ -108,6 +118,8 @@ class TrocaTableSeeder extends Seeder
             'tipo3_id' => 1,
             'tipo4_id' => 2,
             'situacao_id' => 2,
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('trocas')->insert([
             'unidade_id' => 3,
@@ -124,6 +136,8 @@ class TrocaTableSeeder extends Seeder
             'tipo3_id' => 2,
             'tipo4_id' => 1,
             'situacao_id' => 2,
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('trocas')->insert([
             'unidade_id' => 3,
@@ -140,6 +154,8 @@ class TrocaTableSeeder extends Seeder
             'tipo3_id' => 1,
             'tipo4_id' => 2,
             'situacao_id' => 2,
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('trocas')->insert([
             'unidade_id' => 4,
@@ -156,6 +172,8 @@ class TrocaTableSeeder extends Seeder
             'tipo3_id' => 2,
             'tipo4_id' => 1,
             'situacao_id' => 2,
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('trocas')->insert([
             'unidade_id' => 4,
@@ -172,6 +190,8 @@ class TrocaTableSeeder extends Seeder
             'tipo3_id' => 1,
             'tipo4_id' => 2,
             'situacao_id' => 2,
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('trocas')->insert([
             'unidade_id' => 4,
@@ -188,6 +208,8 @@ class TrocaTableSeeder extends Seeder
             'tipo3_id' => 2,
             'tipo4_id' => 1,
             'situacao_id' => 2,
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('trocas')->insert([
             'unidade_id' => 4,
@@ -204,6 +226,8 @@ class TrocaTableSeeder extends Seeder
             'tipo3_id' => 1,
             'tipo4_id' => 2,
             'situacao_id' => 2,
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('trocas')->insert([
             'unidade_id' => 5,
@@ -220,6 +244,8 @@ class TrocaTableSeeder extends Seeder
             'tipo3_id' => 2,
             'tipo4_id' => 1,
             'situacao_id' => 2,
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('trocas')->insert([
             'unidade_id' => 5,
@@ -236,6 +262,8 @@ class TrocaTableSeeder extends Seeder
             'tipo3_id' => 1,
             'tipo4_id' => 2,
             'situacao_id' => 2,
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('trocas')->insert([
             'unidade_id' => 5,
@@ -252,6 +280,8 @@ class TrocaTableSeeder extends Seeder
             'tipo3_id' => 2,
             'tipo4_id' => 1,
             'situacao_id' => 2,
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('trocas')->insert([
             'unidade_id' => 5,
@@ -268,6 +298,8 @@ class TrocaTableSeeder extends Seeder
             'tipo3_id' => 1,
             'tipo4_id' => 2,
             'situacao_id' => 2,
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
     }
 }

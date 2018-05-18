@@ -21,6 +21,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('Admin'),
             'ativo' => true,
             'perfil_id' => 1,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 5,
@@ -30,6 +33,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('operador'),
             'ativo' => true,
             'perfil_id' => 2,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 1,
@@ -39,6 +45,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('supervisor'),
             'ativo' => true,
             'perfil_id' => 3,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 1,
@@ -48,6 +57,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('supervisor'),
             'ativo' => true,
             'perfil_id' => 3,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 1,
@@ -57,6 +69,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('supervisor'),
             'ativo' => true,
             'perfil_id' => 3,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 1,
@@ -66,6 +81,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('supervisor'),
             'ativo' => true,
             'perfil_id' => 3,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 2,
@@ -75,6 +93,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('operador'),
             'ativo' => true,
             'perfil_id' => 4,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 2,
@@ -84,6 +105,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('operador'),
             'ativo' => true,
             'perfil_id' => 4,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 2,
@@ -93,6 +117,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('operador'),
             'ativo' => true,
             'perfil_id' => 4,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 2,
@@ -102,6 +129,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('operador'),
             'ativo' => true,
             'perfil_id' => 4,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 3,
@@ -111,6 +141,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('operador'),
             'ativo' => true,
             'perfil_id' => 4,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 3,
@@ -120,6 +153,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('operador'),
             'ativo' => true,
             'perfil_id' => 4,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 3,
@@ -129,6 +165,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('operador'),
             'ativo' => true,
             'perfil_id' => 4,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 3,
@@ -138,6 +177,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('operador'),
             'ativo' => true,
             'perfil_id' => 4,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 4,
@@ -147,6 +189,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('operador'),
             'ativo' => true,
             'perfil_id' => 4,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 4,
@@ -156,6 +201,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('operador'),
             'ativo' => true,
             'perfil_id' => 4,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 4,
@@ -165,6 +213,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('operador'),
             'ativo' => true,
             'perfil_id' => 4,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 4,
@@ -174,6 +225,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('operador'),
             'ativo' => true,
             'perfil_id' => 4,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 5,
@@ -183,6 +237,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('operador'),
             'ativo' => true,
             'perfil_id' => 4,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 5,
@@ -192,6 +249,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('operador'),
             'ativo' => true,
             'perfil_id' => 4,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 5,
@@ -201,6 +261,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('operador'),
             'ativo' => true,
             'perfil_id' => 4,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('users')->insert([
             'unidade_id' => 5,
@@ -210,6 +273,9 @@ class UserTableSeeder extends Seeder
             'password' => app('hash')->make('operador'),
             'ativo' => true,
             'perfil_id' => 4,
+            'api_token' => str_random(60),
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\User;
+use Illuminate\Support\Facades\Crypt;
 
 class UserController extends Controller
 {
@@ -28,6 +29,7 @@ class UserController extends Controller
         ]);
 
         $user = new User($request->all());
+        $user->password = Crypt::encrypt($request->input('password'));
         $user->api_token = str_random(60);
         $user->save();
 
@@ -36,17 +38,18 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
-        /*$user = new User($request->all());
-        $user->api_token = str_random(60);
-        $user->save();*/
-
         $dados = $request->only('chave', 'password');
         $user = User::where('chave', $dados['chave'])
-            ->where('password', $dados['password'])
             ->first();
-        $user->api_token = str_random(60);
-        $user->update();
-        return ['api_token' => $user->api_token];
+        if (Crypt::decrypt($user->password) == $dados['password']) {
+            $user->api_token = str_random(60);
+            $user->update();
+            return ['api_token' => $user->api_token];
+        } else {
+            return new Response('Login ou usuário inválidos.', 401);
+        }
+
+
     }
 
 
@@ -82,7 +85,7 @@ class UserController extends Controller
         $user->perfil_id = $request->input('perfil_id');
 
         if (isset($request->all()['password'])) {
-            $user->password = $request->input('password');
+            $user->password = Crypt::encrypt($request->input('password'));
         }
 
         $user->update();

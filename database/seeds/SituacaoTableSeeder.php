@@ -14,25 +14,39 @@ class SituacaoTableSeeder extends Seeder
     {
         //
         DB::table('situacaos')->insert([
-            'situacao' => 'Autorizada'
+            'situacao' => 'Autorizada',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('situacaos')->insert([
-            'situacao' => 'Cadastrada'
+            'situacao' => 'Cadastrada',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('situacaos')->insert([
-            'situacao' => 'Cancelada'
+            'situacao' => 'Cancelada',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('situacaos')->insert([
-            'situacao' => 'Concluída'
+            'situacao' => 'Concluída',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('situacaos')->insert([
-            'situacao' => 'Confirmada'
+            'situacao' => 'Confirmada',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('situacaos')->insert([
-            'situacao' => 'Pendente'
+            'situacao' => 'Pendente',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('situacaos')->insert([
-            'situacao' => 'Rejeitada'
+            'situacao' => 'Rejeitada',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
     }
 }

@@ -14,22 +14,34 @@ class UnidadeTableSeeder extends Seeder
     {
         //
         DB::table('unidades')->insert([
-            'nome' => 'TEU'
+            'nome' => 'TEU',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('unidades')->insert([
-            'nome' => 'Hidrogenio'
+            'nome' => 'Hidrogenio',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('unidades')->insert([
-            'nome' => 'Movimentação'
+            'nome' => 'Movimentação',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('unidades')->insert([
-            'nome' => 'TMA'
+            'nome' => 'TMA',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('unidades')->insert([
-            'nome' => 'Utilidades'
+            'nome' => 'Utilidades',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('unidades')->insert([
-            'nome' => 'Amonia'
+            'nome' => 'Amonia',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
     }
 }

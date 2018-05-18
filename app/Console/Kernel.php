@@ -26,4 +26,8 @@ class Kernel extends ConsoleKernel
     {
         //
     }
+
+    protected $routeMiddleware = [
+        'auth' => 'App\Http\Middleware\Authenticate'
+    ];
 }

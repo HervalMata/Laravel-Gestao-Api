@@ -1,12 +1,21 @@
 <?php
 
-use Laravel\Lumen\Testing\DatabaseMigrations;
+use App\User;
 use Laravel\Lumen\Testing\DatabaseTransactions;
 
 class TrocaTest extends TestCase
 {
 
     use DatabaseTransactions;
+
+    public $api_token = [];
+
+    public function __construct(?string $name = null, array $data = [], string $dataName = '')
+    {
+        parent::__construct($name, $data, $dataName);
+        $this->api_token = ['api_token' => User::where('api_token', '<>', '')->first()->api_token];
+    }
+
     /**
      * A basic test example.
      *
@@ -31,7 +40,7 @@ class TrocaTest extends TestCase
             'situacao_id' => 2
         ];
 
-        $this->post('/api/trocas', $dados);
+        $this->post('/api/trocas', $dados, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -58,7 +67,7 @@ class TrocaTest extends TestCase
     {
         $troca = \App\Troca::first();
 
-        $this->get('/api/trocas/'.$troca->id);
+        $this->get('/api/trocas/'.$troca->id, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -83,7 +92,7 @@ class TrocaTest extends TestCase
 
     public function testAllViewTroca()
     {
-        $this->get('/api/trocas/');
+        $this->get('/api/trocas/', $this->api_token);
 
         $this->assertResponseOk();
 
@@ -116,7 +125,7 @@ class TrocaTest extends TestCase
             'situacao_id' => 2
         ];
 
-        $this->put('/api/trocas/'.$troca->id, $dados);
+        $this->put('/api/trocas/'.$troca->id, $dados, $this->api_token);
 
         $this->assertResponseOk();
 

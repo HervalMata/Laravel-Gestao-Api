@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Laravel\Lumen\Testing\DatabaseTransactions;
 
 class UnidadeTest extends TestCase
@@ -7,6 +8,13 @@ class UnidadeTest extends TestCase
 
     use DatabaseTransactions;
 
+    public $api_token = [];
+
+    public function __construct(?string $name = null, array $data = [], string $dataName = '')
+    {
+        parent::__construct($name, $data, $dataName);
+        $this->api_token = ['api_token' => User::where('api_token', '<>', '')->first()->api_token];
+    }
     /**
      * A basic test example.
      *
@@ -18,7 +26,7 @@ class UnidadeTest extends TestCase
             'nome' => 'Teste'
         ];
 
-        $this->post('/api/unidades', $dados);
+        $this->post('/api/unidades', $dados, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -34,7 +42,7 @@ class UnidadeTest extends TestCase
             'nome' => ''
         ];
 
-        $this->post('/api/unidades', $dados);
+        $this->post('/api/unidades', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -46,7 +54,7 @@ class UnidadeTest extends TestCase
         'nome' => 'dggjjhffdddjjkkkoç.mgrsgyyyyyyyyyyyyyyyyy'
     ];
 
-    $this->post('/api/unidades', $dados);
+    $this->post('/api/unidades', $dados, $this->api_token);
 
     $this->assertResponseStatus(422);
 
@@ -58,7 +66,7 @@ class UnidadeTest extends TestCase
             'nome' => 'TEU'
         ];
 
-        $this->post('/api/unidades', $dados);
+        $this->post('/api/unidades', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -68,7 +76,7 @@ class UnidadeTest extends TestCase
     {
         $unidade = \App\Unidade::first();
 
-        $this->get('/api/unidades/'.$unidade->id);
+        $this->get('/api/unidades/'.$unidade->id, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -86,7 +94,7 @@ class UnidadeTest extends TestCase
             'nome' => 'Teste'
         ];
 
-        $this->put('/api/unidades/'.$unidade->id, $dados);
+        $this->put('/api/unidades/'.$unidade->id, $dados, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -102,7 +110,7 @@ class UnidadeTest extends TestCase
 
     public function testAllViewUnidade()
     {
-        $this->get('/api/unidades/');
+        $this->get('/api/unidades/', $this->api_token);
 
         $this->assertResponseOk();
 
@@ -118,7 +126,7 @@ class UnidadeTest extends TestCase
     {
         $unidade = \App\Unidade::findOrFail(6);
 
-        $this->delete('/api/unidades/'.$unidade->id);
+        $this->delete('/api/unidades/'.$unidade->id, $this->api_token);
 
         $this->assertResponseOk();
 
@@ -130,7 +138,7 @@ class UnidadeTest extends TestCase
     {
         $unidade = \App\Unidade::first();
 
-        $this->delete('/api/perfis/'.$unidade->id);
+        $this->delete('/api/perfis/'.$unidade->id, $this->api_token);
 
         $this->assertResponseStatus(500);
 

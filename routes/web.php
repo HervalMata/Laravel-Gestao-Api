@@ -15,7 +15,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->group(['prefix' => 'api'], function () use ($router) {
+$router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($router) {
     $router->post('unidades', ['uses' => 'UnidadeController@store']);
     $router->get('unidades', ['uses' => 'UnidadeController@list']);
     $router->get('unidades/{id}', ['uses' => 'UnidadeController@view']);
@@ -23,7 +23,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->delete('unidades/{id}', ['uses' => 'UnidadeController@delete']);
 });
 
-$router->group(['prefix' => 'api'], function () use ($router) {
+$router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($router) {
     $router->post('perfis', ['uses' => 'PerfilController@store']);
     $router->get('perfis', ['uses' => 'PerfilController@list']);
     $router->get('perfis/{id}', ['uses' => 'PerfilController@view']);
@@ -31,7 +31,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->delete('perfis/{id}', ['uses' => 'PerfilController@delete']);
 });
 
-$router->group(['prefix' => 'api'], function () use ($router) {
+$router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($router) {
     $router->post('turmas', ['uses' => 'TurmaController@store']);
     $router->get('turmas', ['uses' => 'TurmaController@list']);
     $router->get('turmas/{id}', ['uses' => 'TurmaController@view']);
@@ -39,7 +39,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->delete('turmas/{id}', ['uses' => 'TurmaController@delete']);
 });
 
-$router->group(['prefix' => 'api'], function () use ($router) {
+$router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($router) {
     $router->post('tipos', ['uses' => 'TipoController@store']);
     $router->get('tipos', ['uses' => 'TipoController@list']);
     $router->get('tipos/{id}', ['uses' => 'TipoController@view']);
@@ -47,7 +47,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->delete('tipos/{id}', ['uses' => 'TipoController@delete']);
 });
 
-$router->group(['prefix' => 'api'], function () use ($router) {
+$router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($router) {
     $router->post('turnos', ['uses' => 'TurnoController@store']);
     $router->get('turnos', ['uses' => 'TurnoController@list']);
     $router->get('turnos/{id}', ['uses' => 'TurnoController@view']);
@@ -55,7 +55,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->delete('turnos/{id}', ['uses' => 'TurnoController@delete']);
 });
 
-$router->group(['prefix' => 'api'], function () use ($router) {
+$router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($router) {
     $router->post('situacaos', ['uses' => 'SituacaoController@store']);
     $router->get('situacaos', ['uses' => 'SituacaoController@list']);
     $router->get('situacaos/{id}', ['uses' => 'SituacaoController@view']);
@@ -63,7 +63,7 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->delete('situacaos/{id}', ['uses' => 'SituacaoController@delete']);
 });
 
-$router->group(['prefix' => 'api'], function () use ($router) {
+$router->group(['prefix' => 'api', 'middleware' => 'auth'], function ($router) {
     $router->post('users', ['uses' => 'UserController@store']);
     $router->get('users', ['uses' => 'UserController@list']);
     $router->get('users/{id}', ['uses' => 'UserController@view']);
@@ -71,13 +71,11 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->delete('users/{id}', ['uses' => 'UserController@delete']);
 });
 
-$router->group(['prefix' => 'api'], function () use ($router) {
+$router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($router) {
     $router->post('trocas', ['uses' => 'TrocaController@store']);
     $router->get('trocas', ['uses' => 'TrocaController@list']);
     $router->get('trocas/{id}', ['uses' => 'TrocaController@view']);
     $router->put('trocas/{id}', ['uses' => 'TrocaController@update']);
 });
 
-$router->group(['prefix' => 'api'], function () use ($router) {
-    $router->post('login', 'UserController@login');
-});
+$router->post('/api/login', 'UserController@login');

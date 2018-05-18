@@ -14,13 +14,19 @@ class TurnoTableSeeder extends Seeder
     {
         //
         DB::table('turnos')->insert([
-            'turno' => '1º Turno'
+            'turno' => '1º Turno',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('turnos')->insert([
-            'turno' => '2º Turno'
+            'turno' => '2º Turno',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('turnos')->insert([
-            'turno' => '3º Turno'
+            'turno' => '3º Turno',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
     }
 }

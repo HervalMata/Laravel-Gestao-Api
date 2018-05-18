@@ -14,19 +14,29 @@ class PerfilTableSeeder extends Seeder
     {
         //
         DB::table('perfils')->insert([
-            'nome' => 'Administrador'
+            'nome' => 'Administrador',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('perfils')->insert([
-            'nome' => 'Gerente'
+            'nome' => 'Gerente',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('perfils')->insert([
-            'nome' => 'Supervisor'
+            'nome' => 'Supervisor',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('perfils')->insert([
-            'nome' => 'Operador'
+            'nome' => 'Operador',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('perfils')->insert([
-            'nome' => 'Coordenador'
+            'nome' => 'Coordenador',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
     }
 }

@@ -14,16 +14,24 @@ class TipoTableSeeder extends Seeder
     {
         //
         DB::table('tipos')->insert([
-            'tipo' => 'TT'
+            'tipo' => 'TT',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('tipos')->insert([
-            'tipo' => 'TF'
+            'tipo' => 'TF',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('tipos')->insert([
-            'tipo' => 'DC+'
+            'tipo' => 'DC+',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
         DB::table('tipos')->insert([
-            'tipo' => 'DC-'
+            'tipo' => 'DC-',
+            'created_at' => '2018-5-17 17:20:00',
+            'updated_at' => '2018-5-17 17:20:00',
         ]);
     }
 }
