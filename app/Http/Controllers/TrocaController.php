@@ -163,8 +163,8 @@ class TrocaController extends Controller
                 'tipos3.tipo AS Tipo3',  'tipos4.tipo AS Tipo4', 'situacaos.situacao AS situacao');
 
         if ($request->has('user2_id')) {
-            $trocas = $trocas->where('users.name', 'LIKE', "%" . $request->input('users2_id') . "%");
-            $user2_id = $request->input('users1_id');
+            $trocas = $trocas->where('users.name', 'LIKE', "%" . $request->input('user2_id') . "%");
+            $user2_id = $request->input('user2_id');
         }
 
         if ($request->has('situacao_id')) {
@@ -334,9 +334,7 @@ class TrocaController extends Controller
 
     public function updateConfirmadas(Request $request, $id)
     {
-        $dados = [
-            'situacao_id' => 5
-        ];
+        'situacao_id' == 5;
 
         $this->validate($request, [
             'situacao_id' => 'required'
@@ -344,7 +342,7 @@ class TrocaController extends Controller
 
         $troca = Troca::find($id);
 
-        $troca->situacao_id = $request->input($dados);
+        $troca->situacao_id = $request->input('situacao_id');
         $troca->update();
 
         return $troca;
@@ -362,7 +360,7 @@ class TrocaController extends Controller
 
         $troca = Troca::find($id);
 
-        $troca->situacao_id = $request->input($dados);
+        $troca->situacao_id = $request->input('situacao_id');
         $troca->update();
 
         return $troca;
@@ -370,9 +368,7 @@ class TrocaController extends Controller
 
     public function updateAutorizadas(Request $request, $id)
     {
-        $dados = [
-            'situacao_id' => 1
-        ];
+        'situacao_id' == 1;
 
         $this->validate($request, [
             'situacao_id' => 'required'
@@ -380,7 +376,7 @@ class TrocaController extends Controller
 
         $troca = Troca::find($id);
 
-        $troca->situacao_id = $request->input($dados);
+        $troca->situacao_id = $request->input('situacao_id');
         $troca->update();
 
         return $troca;
@@ -388,9 +384,7 @@ class TrocaController extends Controller
 
     public function updateCanceladas(Request $request, $id)
     {
-        $dados = [
-            'situacao_id' => 3
-        ];
+        'situacao_id' == 3;
 
         $this->validate($request, [
             'situacao_id' => 'required'
@@ -398,7 +392,7 @@ class TrocaController extends Controller
 
         $troca = Troca::find($id);
 
-        $troca->situacao_id = $request->input($dados);
+        $troca->situacao_id = $request->input('situacao_id');
         $troca->update();
 
         return $troca;
@@ -406,9 +400,7 @@ class TrocaController extends Controller
 
     public function updateConcluidas(Request $request, $id)
     {
-        $dados = [
-            'situacao_id' => 4
-        ];
+        'situacao_id' == 4;
 
         $this->validate($request, [
             'situacao_id' => 'required'
@@ -416,7 +408,23 @@ class TrocaController extends Controller
 
         $troca = Troca::find($id);
 
-        $troca->situacao_id = $request->input($dados);
+        $troca->situacao_id = $request->input('situacao_id');
+        $troca->update();
+
+        return $troca;
+    }
+
+    public function updatePendentes(Request $request, $id)
+    {
+            'situacao_id' == 6;
+
+        $this->validate($request, [
+            'situacao_id' => 'required'
+        ]);
+
+        $troca = Troca::find($id);
+
+        $troca->situacao_id = $request->input('situacao_id');
         $troca->update();
 
         return $troca;
