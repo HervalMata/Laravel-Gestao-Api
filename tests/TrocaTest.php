@@ -100,8 +100,27 @@ class TrocaTest extends TestCase
 
     public function testAllViewTrocaCadastrada()
     {
-        $this->get('/api/trocas/cadastradas', $this->api_token);
+        $dados = [
+            'unidade_id' => 5,
+            'chave' => '1111',
+            'name' => 'Herval',
+            'email' => 'operador_gestao@gmail.com',
+            'password' => 'operador',
+            'password_confirmation' => 'operador',
+            'ativo' => true,
+            'perfil_id' => 4,
+        ];
 
+        $this->post('/api/users', $dados, $this->api_token);
+
+        $this->assertResponseOk();
+
+        $this->post('/api/login', $dados);
+
+        $this->assertResponseOk();
+
+        $this->get('/api/trocas/cadastradas', $this->api_token);
+        print_r($this->response->content());
         $this->assertResponseOk();
 
     }

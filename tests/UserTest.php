@@ -62,7 +62,7 @@ class UserTest extends TestCase
             'perfil_id' => 1,
         ];
 
-        $this->post('/api/situacaos', $dados, $this->api_token);
+        $this->post('/api/users', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -81,7 +81,7 @@ class UserTest extends TestCase
             'perfil_id' => 1,
         ];
 
-        $this->post('/api/situacaos', $dados, $this->api_token);
+        $this->post('/api/users', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -100,7 +100,7 @@ class UserTest extends TestCase
             'perfil_id' => 1,
         ];
 
-        $this->post('/api/situacaos', $dados, $this->api_token);
+        $this->post('/api/users', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -119,7 +119,7 @@ class UserTest extends TestCase
             'perfil_id' => 1,
         ];
 
-        $this->post('/api/situacaos', $dados, $this->api_token);
+        $this->post('/api/users', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -138,7 +138,7 @@ class UserTest extends TestCase
             'perfil_id' => 1,
         ];
 
-        $this->post('/api/situacaos', $dados, $this->api_token);
+        $this->post('/api/users', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -157,7 +157,7 @@ class UserTest extends TestCase
             'perfil_id' => 1,
         ];
 
-        $this->post('/api/situacaos', $dados, $this->api_token);
+        $this->post('/api/users', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -176,7 +176,7 @@ class UserTest extends TestCase
             'perfil_id' => 1,
         ];
 
-        $this->post('/api/situacaos', $dados, $this->api_token);
+        $this->post('/api/users', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -195,7 +195,7 @@ class UserTest extends TestCase
             'perfil_id' => null,
         ];
 
-        $this->post('/api/situacaos', $dados, $this->api_token);
+        $this->post('/api/users', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -214,7 +214,7 @@ class UserTest extends TestCase
             'perfil_id' => 2,
         ];
 
-        $this->post('/api/situacaos', $dados, $this->api_token);
+        $this->post('/api/users', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -233,7 +233,7 @@ class UserTest extends TestCase
             'perfil_id' => 2,
         ];
 
-        $this->post('/api/situacaos', $dados, $this->api_token);
+        $this->post('/api/users', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -252,7 +252,7 @@ class UserTest extends TestCase
             'perfil_id' => 1,
         ];
 
-        $this->post('/api/situacaos', $dados, $this->api_token);
+        $this->post('/api/users', $dados, $this->api_token);
 
         $this->assertResponseStatus(422);
 
@@ -344,25 +344,6 @@ class UserTest extends TestCase
 
         $this->assertResponseOk();
 
-        /*$this->seeJsonStructure([
-            [ 'current_page', 'data' =>  [
-                'unidade',
-                'chave',
-                'name',
-                'email',
-                'ativo',
-                'perfil'
-            ]]
-        ]);
-        $reposta = (array) json_decode($this->response->content());
-
-        $this->assertArrayHasKey('unidade', $reposta);
-        $this->assertArrayHasKey('chave', $reposta);
-        $this->assertArrayHasKey('name', $reposta);
-        $this->assertArrayHasKey('email', $reposta);
-        $this->assertArrayHasKey('ativo', $reposta);
-        $this->assertArrayHasKey('perfil', $reposta);
-        $this->assertArrayHasKey('id', $reposta);*/
     }
 
     public function testLogin()
@@ -385,8 +366,6 @@ class UserTest extends TestCase
         $this->post('/api/login', $dados);
 
         $this->assertResponseOk();
-
-        print_r($this->response->content());
 
         $reposta = (array) json_decode($this->response->content());
 

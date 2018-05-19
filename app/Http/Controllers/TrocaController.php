@@ -82,8 +82,8 @@ class TrocaController extends Controller
                 'tipos3.tipo AS Tipo3',  'tipos4.tipo AS Tipo4', 'situacaos.situacao AS situacao');
 
         if ($request->has('user1_id')) {
-            $trocas = $trocas->where('users.name', 'LIKE', "%" . $request->input('users1_id') . "%");
-            $user1_id = $request->input('users1_id');
+            $trocas = $trocas->where('users.name', 'LIKE', "%" . $request->input('user1_id') . "%");
+            $user1_id = $request->input('user1_id');
         }
 
         if ($request->has('turma1_id')) {
@@ -127,7 +127,7 @@ class TrocaController extends Controller
 
     public function listCadastradas(Request $request)
     {
-        $user2_id =  auth()->user();
+        $user2_id =  \Auth::user()->id;
         $situacao_id = 2;
         $column = 'trocas.data1';
         $direction = 'asc';
@@ -163,7 +163,7 @@ class TrocaController extends Controller
                 'tipos3.tipo AS Tipo3',  'tipos4.tipo AS Tipo4', 'situacaos.situacao AS situacao');
 
         if ($request->has('user2_id')) {
-            $trocas = $trocas->where('users.name', 'LIKE', "%" . $request->input('user2_id') . "%");
+            $trocas = $trocas->where('user2_id', 'LIKE', "%" . $request->input('user2_id') . "%");
             $user2_id = $request->input('user2_id');
         }
 
