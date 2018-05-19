@@ -160,9 +160,12 @@ class TrocaController extends Controller
             ->join('unidades', 'unidades.id', '=', 'trocas.unidade_id')
             ->select('unidades.nome AS unidade', 'users1.name AS Usuario1', 'turmas1.turma AS Turma1', 'users2.name AS Usuario2', 'turmas2.turma AS Turma2 ',
                 'data1', 'turnos1.turno AS Turno1', 'tipos1.tipo AS Tipo1', 'tipos2.tipo AS Tipo2', 'data2', 'turnos2.turno AS Turno2',
-                'tipos3.tipo AS Tipo3',  'tipos4.tipo AS Tipo4', 'situacaos.situacao AS situacao');
+                'tipos3.tipo AS Tipo3',  'tipos4.tipo AS Tipo4', 'situacaos.situacao AS situacao')
+            ->where([
+                    ['trocas.user2_id', '=', $user2_id],
+                    ['trocas.situacao_id', '=', $situacao_id],]);
 
-        if ($request->has('user2_id')) {
+        /*if ($request->has('user2_id')) {
             $trocas = $trocas->where('user2_id', 'LIKE', "%" . $request->input('user2_id') . "%");
             $user2_id = $request->input('user2_id');
         }
@@ -170,7 +173,7 @@ class TrocaController extends Controller
         if ($request->has('situacao_id')) {
             $trocas = $trocas->where('situacaos.situacao', 'LIKE', "%" . $request->input('situacao_id') . "%");
             $situacao_id = $request->input('situacao_id');
-        }
+        }*/
 
         $trocas = $trocas->paginate($per_page);
 
@@ -185,11 +188,11 @@ class TrocaController extends Controller
                 'prev_page_url' => $trocas->previousPageUrl(),
                 'direction' => $direction,
                 'column' => $column,
-            ],
+            ]/*,
             'filters' => [
                 'user2_id' => $user2_id,
                 'situacao_id' => $situacao_id
-            ]
+            ]*/
         ];
         return response()->json($response);
     }
@@ -228,12 +231,13 @@ class TrocaController extends Controller
             ->join('unidades', 'unidades.id', '=', 'trocas.unidade_id')
             ->select('unidades.nome AS unidade', 'users1.name AS Usuario1', 'turmas1.turma AS Turma1', 'users2.name AS Usuario2', 'turmas2.turma AS Turma2 ',
                 'data1', 'turnos1.turno AS Turno1', 'tipos1.tipo AS Tipo1', 'tipos2.tipo AS Tipo2', 'data2', 'turnos2.turno AS Turno2',
-                'tipos3.tipo AS Tipo3',  'tipos4.tipo AS Tipo4', 'situacaos.situacao AS situacao');
+                'tipos3.tipo AS Tipo3',  'tipos4.tipo AS Tipo4', 'situacaos.situacao AS situacao')
+            ->where('trocas.situacao_id', '=', 'situacao_id');
 
-        if ($request->has('situacao_id')) {
+        /*if ($request->has('situacao_id')) {
             $trocas = $trocas->where('situacaos.situacao', 'LIKE', "%" . $request->input('situacao_id') . "%");
             $situacao_id = $request->input('situacao_id');
-        }
+        }*/
 
         $trocas = $trocas->paginate($per_page);
 
@@ -248,10 +252,10 @@ class TrocaController extends Controller
                 'prev_page_url' => $trocas->previousPageUrl(),
                 'direction' => $direction,
                 'column' => $column,
-            ],
+            ]/*,
             'filters' => [
                 'situacao_id' => $situacao_id
-            ]
+            ]*/
         ];
         return response()->json($response);
     }
@@ -290,12 +294,13 @@ class TrocaController extends Controller
             ->join('unidades', 'unidades.id', '=', 'trocas.unidade_id')
             ->select('unidades.nome AS unidade', 'users1.name AS Usuario1', 'turmas1.turma AS Turma1', 'users2.name AS Usuario2', 'turmas2.turma AS Turma2 ',
                 'data1', 'turnos1.turno AS Turno1', 'tipos1.tipo AS Tipo1', 'tipos2.tipo AS Tipo2', 'data2', 'turnos2.turno AS Turno2',
-                'tipos3.tipo AS Tipo3',  'tipos4.tipo AS Tipo4', 'situacaos.situacao AS situacao');
+                'tipos3.tipo AS Tipo3',  'tipos4.tipo AS Tipo4', 'situacaos.situacao AS situacao')
+            ->where('trocas.situacao_id', '=', 'situacao_id');
 
-        if ($request->has('situacao_id')) {
+        /*if ($request->has('situacao_id')) {
             $trocas = $trocas->where('situacaos.situacao', 'LIKE', "%" . $request->input('situacao_id') . "%");
             $situacao_id = $request->input('situacao_id');
-        }
+        }*/
 
         $trocas = $trocas->paginate($per_page);
 
@@ -310,10 +315,10 @@ class TrocaController extends Controller
                 'prev_page_url' => $trocas->previousPageUrl(),
                 'direction' => $direction,
                 'column' => $column,
-            ],
+            ]/*,
             'filters' => [
                 'situacao_id' => $situacao_id
-            ]
+            ]*/
         ];
         return response()->json($response);
     }
