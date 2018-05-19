@@ -403,4 +403,22 @@ class TrocaController extends Controller
 
         return $troca;
     }
+
+    public function updateConcluidas(Request $request, $id)
+    {
+        $dados = [
+            'situacao_id' => 4
+        ];
+
+        $this->validate($request, [
+            'situacao_id' => 'required'
+        ]);
+
+        $troca = Troca::find($id);
+
+        $troca->situacao_id = $request->input($dados);
+        $troca->update();
+
+        return $troca;
+    }
 }
