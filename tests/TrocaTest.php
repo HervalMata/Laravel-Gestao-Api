@@ -187,4 +187,48 @@ class TrocaTest extends TestCase
             'situacao_id' => $dados['situacao_id']
         ]);
     }
+
+    public function testUpdateTrocaAutorizada()
+    {
+        $troca= \App\Troca::first();
+
+        $dados = [
+            'situacao_id' => 1
+        ];
+
+        $this->put('/api/trocas/autorizar/'.$troca->id, $dados, $this->api_token);
+
+        $this->assertResponseOk();
+
+        $reposta = (array) json_decode($this->response->content());
+
+        $this->assertArrayHasKey('situacao_id', $reposta);
+        $this->assertArrayHasKey('id', $reposta);
+
+        $this->seeInDatabase('trocas', [
+            'situacao_id' => $dados['situacao_id']
+        ]);
+    }
+
+    public function testUpdateTrocaCancelada()
+    {
+        $troca= \App\Troca::first();
+
+        $dados = [
+            'situacao_id' => 3
+        ];
+
+        $this->put('/api/trocas/cancelar/'.$troca->id, $dados, $this->api_token);
+
+        $this->assertResponseOk();
+
+        $reposta = (array) json_decode($this->response->content());
+
+        $this->assertArrayHasKey('situacao_id', $reposta);
+        $this->assertArrayHasKey('id', $reposta);
+
+        $this->seeInDatabase('trocas', [
+            'situacao_id' => $dados['situacao_id']
+        ]);
+    }
 }

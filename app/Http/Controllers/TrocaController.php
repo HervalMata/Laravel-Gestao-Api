@@ -334,13 +334,17 @@ class TrocaController extends Controller
 
     public function updateConfirmadas(Request $request, $id)
     {
+        $dados = [
+            'situacao_id' => 5
+        ];
+
         $this->validate($request, [
             'situacao_id' => 'required'
         ]);
 
         $troca = Troca::find($id);
 
-        $troca->situacao_id = $request->input('situacao_id');
+        $troca->situacao_id = $request->input($dados);
         $troca->update();
 
         return $troca;
@@ -348,13 +352,53 @@ class TrocaController extends Controller
 
     public function updateRejeitadas(Request $request, $id)
     {
+        $dados = [
+            'situacao_id' => 7
+        ];
+
         $this->validate($request, [
             'situacao_id' => 'required'
         ]);
 
         $troca = Troca::find($id);
 
-        $troca->situacao_id = $request->input('situacao_id');
+        $troca->situacao_id = $request->input($dados);
+        $troca->update();
+
+        return $troca;
+    }
+
+    public function updateAutorizadas(Request $request, $id)
+    {
+        $dados = [
+            'situacao_id' => 1
+        ];
+
+        $this->validate($request, [
+            'situacao_id' => 'required'
+        ]);
+
+        $troca = Troca::find($id);
+
+        $troca->situacao_id = $request->input($dados);
+        $troca->update();
+
+        return $troca;
+    }
+
+    public function updateCanceladas(Request $request, $id)
+    {
+        $dados = [
+            'situacao_id' => 3
+        ];
+
+        $this->validate($request, [
+            'situacao_id' => 'required'
+        ]);
+
+        $troca = Troca::find($id);
+
+        $troca->situacao_id = $request->input($dados);
         $troca->update();
 
         return $troca;

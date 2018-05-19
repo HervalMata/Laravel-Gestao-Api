@@ -81,6 +81,8 @@ $router->group(['prefix' => 'api', 'middleware' => 'auth'], function () use ($ro
     $router->put('trocas/{id}', ['uses' => 'TrocaController@update']);
     $router->put('trocas/confirmar/{id}', ['uses' => 'TrocaController@updateConfirmadas']);
     $router->put('trocas/rejeitar/{id}', ['uses' => 'TrocaController@updateRejeitadas']);
+    $router->put('trocas/autorizar/{id}', ['uses' => 'TrocaController@updateAutorizadas']);
+    $router->put('trocas/cancelar/{id}', ['uses' => 'TrocaController@updateCanceladas']);
 });
 
 $router->post('/api/login', 'UserController@login');
